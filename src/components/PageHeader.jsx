@@ -3,17 +3,19 @@ import styled from "styled-components";
 const HeaderStyle = styled.header`
     width: 100%;
     background-color: var(--color-grey-5);
+
+    
 `;
 
 
 function PageHeader(props){
    return(
     <HeaderStyle>
-       <div className="brand-logo">
-           <img src='https://static.ui.com/fingerprint/ui/icons/06a25b40-ef1f-463a-82d9-13236866ea3d_257x257.png' alt="Brand Logo"/>
+       <div className="header-info">
+          <img className="brand-logo" alt="Brand Logo" src="https://cdn.shopify.com/s/files/1/1439/1668/t/28/assets/logo.svg?v=136823354682183510631672761392"/>
+          <h4>Devices</h4>
         </div>
-        <div className="info-wrapper">
-           <h4>Devices</h4>
+        <div className="user-info">
            <p>Author/{props.user ||'Developer Name'}</p>
         </div>
     </HeaderStyle>
