@@ -15,6 +15,8 @@ const GlobalStyle = createGlobalStyle`
         --color-black:     #000000;
         //fonts
         --interRegular: InterRegular, serif;
+        //page width
+        --page-width: 160rem;
     }
 
     html{
@@ -23,7 +25,10 @@ const GlobalStyle = createGlobalStyle`
     
     body{
         box-sizing: border-box;
-        font-family: var(--interRegular)
+        font-family: var(--interRegular);
+        color: var(--color-grey-5);
+        
+        
     }
 
     *, *::before, *::after{
