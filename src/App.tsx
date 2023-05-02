@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useQuery } from 'react-query';
-
 import GlobalStyle from "./GlobalStyles";
+import DataViews from './components/DataViews';
 import Header from "./components/Header";
 import Toolbar from './components/Toolbar';
 
@@ -13,8 +13,9 @@ console.log(data)
   return (
         <div>
           <GlobalStyle/>
-          <Header user='John Smith'/>
+          <Header user='Wasiu Ramoni'/>
           <Toolbar/>
+          <DataViews/>
         </div>
   );
 }

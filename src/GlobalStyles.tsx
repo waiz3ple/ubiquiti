@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
         --color-grey-3:    #E5E5E5;
         --color-grey-4:    #BDBDBD;
         --color-grey-5:    #838691;
+        --color-grey-6:    #DBDCE1;
         --color-black:     #000000;
         //fonts
         --interRegular: InterRegular, serif;

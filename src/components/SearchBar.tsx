@@ -5,14 +5,16 @@ import { CloseIcon, SearchIcon } from './IconList';
 const SearchBarWrapper = styled.div`
     display: flex;
     align-content: center;
-    background: var(--color-grey-2);
     width: fit-content;
     height: 3rem;
     border-radius: 5px;
-    box-shadow: .3rem .6rem .8rem 0rem var(--color-grey-4);
+    color: var(--color-grey-4);
+    background: var(--color-grey-2);
+    box-shadow: .3rem .5rem .7rem 0rem currentColor;
     
    
     & .search-icon, & .close-icon {
+      color: var(--color-grey-5);
       height: 1.5rem;
       margin:.7rem;
       cursor:pointer;
@@ -33,7 +35,7 @@ const SearchBarWrapper = styled.div`
         border: none;
         background: transparent;
         appearance: none;
-
+        color: var(--color-grey-5);
         
         &:focus{
             outline: none;
