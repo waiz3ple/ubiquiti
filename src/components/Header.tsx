@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderStyle = styled.header`
@@ -5,7 +6,7 @@ const HeaderStyle = styled.header`
     background-image: linear-gradient(90deg, var(--color-grey-3), 40%, var(--color-grey-1));
     display: grid;
     grid-template-columns: min-content repeat( 2, 1fr);
-    
+    position: relative;
    & .user-info{
       display:grid;
       justify-content: end ;
@@ -22,6 +23,14 @@ const HeaderStyle = styled.header`
       padding-left: 2rem;
       font-size: 1.3rem;
    }
+   & a{
+      padding: 0;
+       
+      & img{
+         height: 100%;
+       }
+      }
+   }
 `;
 
 interface propsType{
@@ -32,7 +41,9 @@ function Header(props: propsType){
    return(
     <HeaderStyle>
           {/* will need to make this image a component*/}
-          <img className="brand-logo" alt="Brand Logo" src="https://cdn.shopify.com/s/files/1/1439/1668/t/28/assets/logo.svg?v=136823354682183510631672761392"/>
+           <Link to="/">
+             <img className="brand-logo" alt="Brand Logo" src="https://cdn.shopify.com/s/files/1/1439/1668/t/28/assets/logo.svg?v=136823354682183510631672761392"/>
+           </Link>
           <h4 className="devices">Devices</h4>
        
         <div className="user-info">

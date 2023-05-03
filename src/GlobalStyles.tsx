@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-const InterRegular = require('./fonts/inter/Inter-Regular.otf');
+const InterRegular = require('./assets/fonts/inter/Inter-Regular.otf');
 
 const GlobalStyle = createGlobalStyle`
     :root{

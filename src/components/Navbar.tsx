@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import { BulletList, GridIcon } from './IconList';
 
@@ -22,9 +23,13 @@ const NavIcons  = styled.div`
 function Navbar() {
   return (
     <NavIcons>
-      <BulletList size={30} />
-      <GridIcon size={25}/>
-      <button className="filter">Filter</button>
+       <NavLink to='/'>
+           <BulletList size={30} />
+       </NavLink>
+       <NavLink to="/grid">
+            <GridIcon size={25}/>
+       </NavLink>
+       <button className="filter">Filter</button>
     </NavIcons>
   )
 }
