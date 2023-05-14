@@ -5,9 +5,11 @@ import TableList from '../components/DataViews/TableList'
 import FilterPanel from '../components/FilterPanel'
 import Header from '../components/Header'
 import { BulletList, GridIcon } from '../components/IconList'
-import Navbar from '../components/Navbar'
+
 import SearchBar from '../components/SearchBar'
 import Toolbar from '../components/Toolbar'
+import { OpenPanel } from '../redux/features/filterPanel/Panel'
+import { useAppDispatch } from '../redux/hooks'
 
 const ViewStyle = styled.div`
     margin: 2.5rem auto;
@@ -47,6 +49,7 @@ const NavIcons  = styled.div`
 
 
 function Home() {
+   const dispatch = useAppDispatch();
   return (
     <div>
        <Header user='Wasiu Ramoni'/>
@@ -59,7 +62,7 @@ function Home() {
                <NavLink to="/grid">
                     <GridIcon size={25}/>
                </NavLink>
-               <button className="filter">Filter</button>
+               <button className="filter" onClick={()=> dispatch(OpenPanel(true))}>Filter</button>
             </NavIcons>
 
            <FilterPanel/>

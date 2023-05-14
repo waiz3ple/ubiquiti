@@ -1,6 +1,10 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { CloseIcon, StopButton } from "./IconList";
+/* import { useDispatch, useSelector } from "react-redux/es/exports"; */
+import { OpenPanel } from "../redux/features/filterPanel/Panel";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+
 
 interface FilterWrapperProps {
     showPanel: boolean;
@@ -47,21 +51,25 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
 const panelOptions: string[] = ['UniFi', 'UniFiLTE', 'UniFiProtect', 'UniFiAccess', 'AirMax', 'EdgeMax'];
 
 function FilterPanel() {
-    const [showPanel, setShowPanel] = useState(true);
+    /* const [showPanel, setShowPanel] = useState(true);
     
 
     const closeFilterPanel = () => {
         console.log('close')
       setShowPanel(false)
    }
-
-
+ */
+   const showPanel = useAppSelector((state)=> state.panel.isOpened);
+   console.log(showPanel);
+   
+   const dispatch = useAppDispatch();
 
   return (
     <FilterWrapper  showPanel={showPanel}>
        <div className="panelHeading">
          <p>Filter</p>
-         <div onClick={closeFilterPanel}>
+        {/*  <div onClick={closeFilterPanel}> */}
+         <div  onClick={()=> dispatch(OpenPanel(false))}> 
             <CloseIcon/>
         </div>
        </div>

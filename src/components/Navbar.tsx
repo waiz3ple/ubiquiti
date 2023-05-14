@@ -1,8 +1,9 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
+import { OpenPanel } from '../redux/features/filterPanel/Panel';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { BulletList, GridIcon } from './IconList';
-
 const NavIcons  = styled.div`
    display: flex;
    align-items: center;
@@ -21,6 +22,8 @@ const NavIcons  = styled.div`
 `;
 
 function Navbar() {
+   const dispatch = useAppDispatch();
+
   return (
     <NavIcons>
        <NavLink to='/'>
@@ -29,7 +32,7 @@ function Navbar() {
        <NavLink to="/grid">
             <GridIcon size={25}/>
        </NavLink>
-       <button className="filter">Filter</button>
+       {/* <button className="filter"  onClick={()=> dispatch(OpenPanel(true))}>WasiuRamoni</button> */}
     </NavIcons>
   )
 }
