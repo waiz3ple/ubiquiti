@@ -3,12 +3,9 @@ import { FunctionComponent } from 'react';
 import { useQuery } from 'react-query';
 
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
-import DataViews from './components/DataViews';
 import GridList from './components/DataViews/GridList';
 import TableList from './components/DataViews/TableList';
 import Header from "./components/Header";
-import Navbar from './components/Navbar';
-import Toolbar from './components/Toolbar';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
  

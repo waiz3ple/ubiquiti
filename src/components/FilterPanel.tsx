@@ -51,24 +51,12 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
 const panelOptions: string[] = ['UniFi', 'UniFiLTE', 'UniFiProtect', 'UniFiAccess', 'AirMax', 'EdgeMax'];
 
 function FilterPanel() {
-    /* const [showPanel, setShowPanel] = useState(true);
-    
-
-    const closeFilterPanel = () => {
-        console.log('close')
-      setShowPanel(false)
-   }
- */
    const showPanel = useAppSelector((state)=> state.panel.isOpened);
-   console.log(showPanel);
-   
    const dispatch = useAppDispatch();
-
   return (
     <FilterWrapper  showPanel={showPanel}>
        <div className="panelHeading">
          <p>Filter</p>
-        {/*  <div onClick={closeFilterPanel}> */}
          <div  onClick={()=> dispatch(OpenPanel(false))}> 
             <CloseIcon/>
         </div>
@@ -76,7 +64,7 @@ function FilterPanel() {
        <div className="panelBody">
            <h3>Product line</h3>
            <ul>
-            {panelOptions.map(option =>(
+             {panelOptions.map(option =>(
              <li key={option}><StopButton size={20}/> {option}</li>
               ))}
            </ul>

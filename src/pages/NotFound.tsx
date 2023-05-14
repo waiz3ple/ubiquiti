@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import image404 from '../assets/images/image.svg';
 import Button from '../components/Button';
 
-const NFWrapper = styled.div`
+const NotFoundWrapper = styled.div`
     text-align: center;
     & img{
        width: 30%;
@@ -24,14 +24,14 @@ const NFWrapper = styled.div`
 `;
 function NotFound() {
   return (
-    <NFWrapper>
+    <NotFoundWrapper>
        <img src={image404} alt="404 Image" />
        <h1 className="title">It seems you hit a snag!</h1>
        <p>Sorry, the page you are requesting is not avaliable</p>
        <Button>
           <Link to={'/'}>Go back Home</Link>
        </Button>
-    </NFWrapper>
+    </NotFoundWrapper>
   )
 }
 

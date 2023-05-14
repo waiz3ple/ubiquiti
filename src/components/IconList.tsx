@@ -2,7 +2,7 @@
 interface iconPropsType {
     size?: number;
     strokeWidth?: number;
-    fill?: 'none' | 'currentColor';
+    fill?: 'none' | 'currentColor'|'inherit';
 }
 
 const param = {

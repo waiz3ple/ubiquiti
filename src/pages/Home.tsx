@@ -7,7 +7,6 @@ import Header from '../components/Header'
 import { BulletList, GridIcon } from '../components/IconList'
 
 import SearchBar from '../components/SearchBar'
-import Toolbar from '../components/Toolbar'
 import { OpenPanel } from '../redux/features/filterPanel/Panel'
 import { useAppDispatch } from '../redux/hooks'
 
@@ -33,6 +32,7 @@ const ToolbarWrapper = styled.div`
 const NavIcons  = styled.div`
    display: flex;
    align-items: center;
+   color: var(--color-grey-5)
   
    & > *:not(:last-child){
     margin-right:1rem;
@@ -42,8 +42,21 @@ const NavIcons  = styled.div`
       font-size: 1.3rem;
       cursor: pointer;
       border: none;
-      background: none;
+      background:none;
       color: inherit;
+   }
+   
+   & a{
+      color: var(--color-grey-5);
+      
+      & > * {
+         color: currentColor
+      }
+      
+      &.active > * {
+        color: var(--color-grey-5);
+        fill: currentColor; 
+      }
    }
 `;
 
