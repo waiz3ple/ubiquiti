@@ -30,12 +30,12 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
     }
     
     & .panelBody{
-       
         & h3 {
             padding: 1.5rem 0 0 1.5rem;
         }
         & ul{
             padding: 1.5rem 1.6rem 3rem;
+            list-style-type: none;
 
             & li .stop-button{
                     position: relative;
@@ -43,11 +43,9 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
                 }
         }
     }
-    
-    & ul {
-        list-style-type: none;
-    }
 `;
+
+
 const panelOptions: string[] = ['UniFi', 'UniFiLTE', 'UniFiProtect', 'UniFiAccess', 'AirMax', 'EdgeMax'];
 
 function FilterPanel() {

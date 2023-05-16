@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { clearSearch, deviceSearch } from '../redux/features/search/Search';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { CloseIcon, SearchIcon } from './IconList';
 
 const SearchBarWrapper = styled.div`
@@ -47,28 +49,24 @@ const SearchBarWrapper = styled.div`
         
     }
 
- 
-`;
+  `;
 
 function SearchBar() {
-  const [input, setInput] = useState({ search:''});
+  const searchValue = useAppSelector((state)=> state.search.value);
+  const dispatch = useAppDispatch();
 
-  function handleChange(event:React.ChangeEvent<HTMLInputElement>):void{
-   setInput({ search:event.target.value })
-   //more incoming here
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>)=>{
+   dispatch(deviceSearch(event.target.value))      
 }
-
-function clearSearchField():void{
-   setInput({search:''})
-}
-
   return (
     <SearchBarWrapper>
         <label htmlFor='search'>
            <SearchIcon />
         </label>
-       <input type="search" name="search" id="search" placeholder='Search'  value={input.search} onChange={handleChange}/>
-       <div onClick={clearSearchField}>
+       <input type="search" name="search" id="search" placeholder='Search' value={searchValue}
+        onChange={handleChange}
+       />
+       <div onClick={()=> dispatch(clearSearch()) }>
           <CloseIcon/>
        </div>
     </SearchBarWrapper>

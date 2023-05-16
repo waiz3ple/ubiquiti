@@ -25,7 +25,7 @@ const App = () => {
    const { data, isLoading, isError } = useQuery('ubquiti-api', ()=> {
      return axios.get('https://static.ui.com/fingerprint/ui/public.json')
     })
-console.log(data)
+//console.log(data)
   return (
        /*  {/* <main>
            <Home/>
