@@ -2,7 +2,8 @@ import { AnyAction, AsyncThunkAction, Dispatch } from "@reduxjs/toolkit";
 import { Key, useEffect } from "react";
 import styled from "styled-components";
 import { fetchDevies } from "../../redux/features/data/Devices";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector, useSearchData } from "../../redux/hooks";
+import { deviceType } from "../../redux/types";
 import Card from "./Card";
 
 const Grid = styled.div`
@@ -16,39 +17,30 @@ const Grid = styled.div`
        gap: 2rem;
    }   
 `;
-interface  deviceType{
-    line: {
-        name:string
-    };
-     product: {
-        name:string
-    };
-    id: Key; 
-    icon: { 
-        id: string; 
-      } 
-    }
 
 function GridList(){
     const devicesData = useAppSelector(state => state.devices);
+    const searchValue = useAppSelector((state)=> state.search.value);
     const dispatch = useAppDispatch()
     useEffect(()=>{ 
         dispatch(fetchDevies())
     },[])
     
     const { loading, data, error } = devicesData;
-    //const memoData = useSearchData(devicesData, 'airMax')
+    const searchData = useSearchData(data, searchValue)
     
+    console.log('memo', searchData)
     console.log('wasiu:', data.devices)
+    
     return (
    <div>
      {loading && <div>Loading...</div>}
      {!loading && error &&  (<div>Error: {error}</div>)}
-     {!loading &&  data.devices?.length &&
-     <Grid>
-        <p className="total-device">{`${data.devices.length} devices`}</p>
+     {!loading &&  data.devices?.length && searchValue &&
+     <Grid>                                  {/*  */}
+        <p className="total-device">{`${searchData.length} ${searchData.length > 1 ? 'devices' : 'device' }`}</p>
         <div className="card-wrapper">
-          { data.devices.map((device: deviceType) => (
+          { searchData.map((device: deviceType) => (
             <Card key={device.id}
             imgUrl={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_257x257.png`}
             productName={device.product.name} 
