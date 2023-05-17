@@ -67,9 +67,9 @@ function TableList(){  // make this reusable
     
     const { loading, data, error } = devicesData;
     const searchData = useSearchData(data, searchValue)
-    
+   
     console.log('memo', searchData)
-    //console.log('wasiu:', data.devices)
+    //console.log('wasiu:', data.devices) 
     //---------------------
     return (
       <div>
@@ -86,18 +86,20 @@ function TableList(){  // make this reusable
            </thead>
            <tbody>
               { searchData.map((device: deviceType) => (
+             <>
               <tr key={device.id}>
-                <td><img src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_257x257.png`}/></td>
-                <td>{device.product.name}</td>
+                <td><img src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_257x257.png`} alt={device.product.name}/></td>
                 <td>{device.line.name}</td>
-                {/* <SpecTable/> */}
+                <td>{device.product.name}</td>
               </tr>
+               {/*  <SpecTable device={device}/>  */}
+              </>
           ))}
            </tbody>
          </TableStyle>
         }
         </div>
-    )
+    ) 
 }
 
 export default TableList;

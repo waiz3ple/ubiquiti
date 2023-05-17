@@ -61,77 +61,39 @@ const Spec = styled.div`
 
 } */
 
-function SpecTable() {
+function SpecTable(props) {
+   const {line, product, shortnames, icon} = props.device;
+  // console.log(props)
   return (
     <Spec>
       <div className="img-wrapper">
-        <img src="https://static.ui.com/fingerprint/ui/icons/06a25b40-ef1f-463a-82d9-13236866ea3d_257x257.png" alt="product name" />
+        <img src={`https://static.ui.com/fingerprint/ui/icons/${icon.id}_257x257.png`} alt={product.name}/>
       </div>
         <table className="spec-table">
           <tbody>
-             <tr>
-              <td>Product Line</td>
-              <td>UniFi</td>
+            <tr>
+              <td>Product line</td>
+              <td>{line.name}</td>
              </tr>
              <tr>
               <td>ID</td>
-              <td>Unifi-network</td>
+              <td>{line.id}</td>
             </tr>
              <tr>
               <td>Name</td>
-              <td>Access Point WiFi in-Wall</td>
+              <td>{product.name}</td>
             </tr>
              <tr>
               <td>Short name</td>
-              <td>U6-Enterprise</td>
+              <td>{shortnames[0]}</td>
             </tr>
             <tr>
-              <td>Product Line</td>
-              <td>UniFi</td>
-             </tr>
-             <tr>
-              <td>ID</td>
-              <td>Unifi-network</td>
-            </tr>
-             <tr>
-              <td>Name</td>
-              <td>Access Point WiFi in-Wall</td>
-            </tr>
-             <tr>
-              <td>Short name</td>
-              <td>U6-Enterprise</td>
+              <td>Max. power</td>
+              <td>25V</td>
             </tr>
             <tr>
-              <td>Product Line</td>
-              <td>UniFi</td>
-             </tr>
-             <tr>
-              <td>ID</td>
-              <td>Unifi-network</td>
-            </tr>
-             <tr>
-              <td>Name</td>
-              <td>Access Point WiFi in-Wall</td>
-            </tr>
-             <tr>
-              <td>Short name</td>
-              <td>U6-Enterprise</td>
-            </tr>
-            <tr>
-              <td>Product Line</td>
-              <td>UniFi</td>
-             </tr>
-             <tr>
-              <td>ID</td>
-              <td>Unifi-network</td>
-            </tr>
-             <tr>
-              <td>Name</td>
-              <td>Access Point WiFi in-Wall</td>
-            </tr>
-             <tr>
-              <td>Short name</td>
-              <td>U6-Enterprise</td>
+              <td>Speed</td>
+              <td>2400Mbs</td>
             </tr>
           </tbody>
         </table>

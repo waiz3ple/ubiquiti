@@ -28,10 +28,6 @@ function GridList(){
     
     const { loading, data, error } = devicesData;
     const searchData = useSearchData(data, searchValue)
-    
-    /* console.log('memo', searchData)
-    console.log('wasiu:', data.devices) */
-    
     return (
    <div>
      {loading && searchValue && <div>Loading...</div>} {/*show load only when swaping layout*/}

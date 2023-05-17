@@ -37,10 +37,14 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
             padding: 1.5rem 1.6rem 3rem;
             list-style-type: none;
 
-            & li .stop-button{
+            & li {
+                cursor:pointer;
+                .stop-button{
                     position: relative;
                     top: .7rem;
+                    
                 }
+            }
         }
     }
 `;
