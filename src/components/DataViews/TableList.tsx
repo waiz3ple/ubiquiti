@@ -1,4 +1,8 @@
+import { useEffect } from 'react';
 import styled from 'styled-components';
+import { fetchDevies } from '../../redux/features/data/Devices';
+import { useAppDispatch, useAppSelector, useSearchData } from '../../redux/hooks';
+import { deviceType } from '../../redux/types';
 import SpecTable from './SpecTable';
 const TableStyle = styled.table`
   width: 100%;  
@@ -53,49 +57,46 @@ const TableStyle = styled.table`
 
 
 function TableList(){  // make this reusable
+    //---------------------
+    const devicesData = useAppSelector(state => state.devices);
+    const searchValue = useAppSelector((state)=> state.search.value);
+    const dispatch = useAppDispatch()
+    useEffect(()=>{ 
+        dispatch(fetchDevies())
+    },[])
+    
+    const { loading, data, error } = devicesData;
+    const searchData = useSearchData(data, searchValue)
+    
+    console.log('memo', searchData)
+    //console.log('wasiu:', data.devices)
+    //---------------------
     return (
+      <div>
+        {loading && searchValue && <div>Loading...</div>}
+        {!loading && error &&  (<div>Error: {error}</div>)}
+        {!loading &&  data.devices?.length  && searchValue &&
          <TableStyle>
            <thead>
               <tr>
-                <th>123 devices</th>
-                <th>Contact</th>
-                <th>Country</th>
+                <th>{`${searchData.length} ${searchData.length > 1 ? 'devices' : 'device' }`}</th>
+                <th>Productline</th>
+                <th>Name</th>
               </tr>
            </thead>
            <tbody>
-              <tr>
-                <td><img src="https://static.ui.com/fingerprint/ui/icons/06a25b40-ef1f-463a-82d9-13236866ea3d_257x257.png"/></td>
-                <td>Maria Anders</td>
-                <td>Germany</td>
+              { searchData.map((device: deviceType) => (
+              <tr key={device.id}>
+                <td><img src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_257x257.png`}/></td>
+                <td>{device.product.name}</td>
+                <td>{device.line.name}</td>
+                {/* <SpecTable/> */}
               </tr>
-                <SpecTable/>
-              <tr>
-                <td><img src="https://static.ui.com/fingerprint/ui/icons/06a25b40-ef1f-463a-82d9-13236866ea3d_257x257.png"/></td>
-                <td>Francisco Chang</td>
-                <td>Mexico</td>
-              </tr>
-              <tr>
-                <td><img src="https://static.ui.com/fingerprint/ui/icons/06a25b40-ef1f-463a-82d9-13236866ea3d_257x257.png"/></td>
-                <td>Roland Mendel</td>
-                <td>Austria</td>
-              </tr>
-              <tr>
-                <td><img src="https://static.ui.com/fingerprint/ui/icons/06a25b40-ef1f-463a-82d9-13236866ea3d_257x257.png"/></td>
-                <td>Helen Bennett</td>
-                <td>UK</td>
-              </tr>
-              <tr>
-                <td><img src="https://static.ui.com/fingerprint/ui/icons/06a25b40-ef1f-463a-82d9-13236866ea3d_257x257.png"/></td>
-                <td>Yoshi Tannamuri</td>
-                <td>Canada</td>
-              </tr>
-              <tr>
-                <td><img src="https://static.ui.com/fingerprint/ui/icons/06a25b40-ef1f-463a-82d9-13236866ea3d_257x257.png"/></td>
-                <td>Giovanni Rovelli</td>
-                <td>Italy</td>
-              </tr>
+          ))}
            </tbody>
-         </TableStyle> 
+         </TableStyle>
+        }
+        </div>
     )
 }
 

@@ -1,5 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios, { AxiosResponse } from 'axios';
+import { ReactNode } from 'react';
 
 /* interface Device {
   name: string;
@@ -22,9 +23,9 @@ interface stateType {
 }
 
 const initialState: stateType = {
-    loading: false,
-    data: [],
-    error: '' 
+  loading: false,
+  data: [],
+  error: '',
 }
 
 export const fetchDevies = createAsyncThunk('device/fetchSpec', async ()=>{

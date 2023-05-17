@@ -29,15 +29,15 @@ function GridList(){
     const { loading, data, error } = devicesData;
     const searchData = useSearchData(data, searchValue)
     
-    console.log('memo', searchData)
-    console.log('wasiu:', data.devices)
+    /* console.log('memo', searchData)
+    console.log('wasiu:', data.devices) */
     
     return (
    <div>
-     {loading && <div>Loading...</div>}
+     {loading && searchValue && <div>Loading...</div>} {/*show load only when swaping layout*/}
      {!loading && error &&  (<div>Error: {error}</div>)}
      {!loading &&  data.devices?.length && searchValue &&
-     <Grid>                                  {/*  */}
+     <Grid>                                  
         <p className="total-device">{`${searchData.length} ${searchData.length > 1 ? 'devices' : 'device' }`}</p>
         <div className="card-wrapper">
           { searchData.map((device: deviceType) => (
@@ -54,5 +54,5 @@ function GridList(){
     )
 }
 
-export default GridList
+export default GridList;
 

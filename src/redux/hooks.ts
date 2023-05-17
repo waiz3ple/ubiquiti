@@ -10,9 +10,12 @@ export const useAppDispatch = () => useDispatch<AppDispatch>()
 //--------------------------
  //other custome hooks
 
-export function useSearchData(data: deviceType, searchTerm:string){
+export function useSearchData( data: deviceType,
+     searchTerm:string){
+    const searchTermClean = searchTerm.replaceAll(/[\\\|\{\}\(\)\[\]\?\/\:\+\=\^\*]+/gm,'') //cleaned from Regex Reserved Chars
     return useMemo(() =>{
-        return data.devices?.filter((item: { product: { name: string }; }) => 
-        new RegExp(searchTerm, 'i').test(item.product.name))
-    },[ searchTerm, data ])
+        return data.devices?.filter((item) => 
+        new RegExp(searchTermClean, 'ig').test(item.product.name)
+        );
+    },[ searchTerm, data])
 } 
