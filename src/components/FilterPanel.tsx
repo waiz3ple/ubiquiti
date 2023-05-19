@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { CloseIcon, StopButton } from "./IconList";
 /* import { useDispatch, useSelector } from "react-redux/es/exports"; */
 import { OpenPanel } from "../redux/features/filterPanel/Panel";
+import { clearActive, makeActive } from "../redux/features/filters/filter";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 
 
@@ -50,24 +51,36 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
 `;
 
 
-const panelOptions: string[] = ['UniFi', 'UniFiLTE', 'UniFiProtect', 'UniFiAccess', 'AirMax', 'EdgeMax'];
 
 function FilterPanel() {
-   const showPanel = useAppSelector((state)=> state.panel.isOpened);
-   const dispatch = useAppDispatch();
+    //const panelOptions: string[] = ['UniFi', 'UniFiLTE', 'UniFiProtect', 'UniFiAccess', 'AirMax', 'EdgeMax'];
+    const showPanel = useAppSelector((state)=> state.panel.isOpened);
+    const dispatch = useAppDispatch();
+    const filterOptions = useAppSelector(state => state.filter) 
+    
+    const handleClick = (event:React.MouseEvent<HTMLLIElement>) => {
+        dispatch(makeActive(event.currentTarget.id))
+    }
+
+    const handleCloseButton = (event:React.MouseEvent<HTMLElement>) => {
+              dispatch(OpenPanel(false));
+              dispatch(clearActive())
+    }
+    
   return (
     <FilterWrapper  showPanel={showPanel}>
+    
        <div className="panelHeading">
          <p>Filter</p>
-         <div  onClick={()=> dispatch(OpenPanel(false))}> 
+         <div  onClick={handleCloseButton}> 
             <CloseIcon/>
         </div>
        </div>
        <div className="panelBody">
            <h3>Product line</h3>
            <ul>
-             {panelOptions.map(option =>(
-             <li key={option}><StopButton size={20}/> {option}</li>
+             {filterOptions.map(({option, id, isActive}) =>(
+             <li key={id} id={id} onClick={handleClick}><StopButton isActive={isActive} size={20}/> {option}</li>
               ))}
            </ul>
        </div>

@@ -3,6 +3,7 @@ interface iconPropsType {
     size?: number;
     strokeWidth?: number;
     fill?: 'none' | 'currentColor'|'inherit';
+    isActive?:boolean;
 }
 
 const param = {
@@ -59,9 +60,9 @@ export function BulletList({size = 15, fill ='none', strokeWidth = 1.5}: iconPro
 }
 
 //stop-button  icon ◻️
-export function StopButton({size = 15, fill ='none', strokeWidth = 1.5}:iconPropsType){
+export function StopButton({size = 15, fill ='none', strokeWidth = 1.5, isActive = false}:iconPropsType){
     return(
-        <svg  fill={fill} viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className="stop-button" style={{width:size, cursor:"pointer"}}>
+        <svg  fill={isActive? 'currentColor':'none'} viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className="stop-button" style={{width:size, cursor:"pointer"}}>
            <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 7.5A2.25 2.25 0 017.5 5.25h9a2.25 2.25 0 012.25 2.25v9a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25v-9z" />
         </svg>
     )
