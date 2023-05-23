@@ -11,7 +11,7 @@ const Spec = styled.div`
           //background-color: green;
           & img {
             width: 60%;
-            display: block;
+            display:  ${({showSpecs}) => showSpecs ? 'block' : 'none'};
             margin: auto;
           }
      }
@@ -20,14 +20,14 @@ const Spec = styled.div`
         width: 50%;
         border-collapse: collapse;
      
-         & tbody  tr{
+         & > tbody  tr{
             display: grid;
             grid-template-columns: repeat(2,  1fr);
-           // background-color: red;
+            
+            //background-color: red;
             
             & td{
               display: grid;
-              border-bottom: 1px solid var(--color-grey-3);
               padding: .5rem 0rem;
               &:last-child{
                  justify-items: end;
@@ -35,25 +35,12 @@ const Spec = styled.div`
               &:first-child{
                  justify-items: start;
               }
-              
-
             }
            
-          }  
-
-       
-        /* &  td {
-           display: grid;
-           border: 1px solid var(--color-grey-3);
-           text-align: left;
-           padding: .5rem 2rem;
-           align-content: center;
-       
-             &:last-child{
-               justify-items: end;
-              }
-
-          } */
+          }
+        & tbody > tr:not(:last-child){
+          border-bottom: 1px solid var(--color-grey-3);
+        } 
       }
 `;
 /* interface propType{
@@ -63,7 +50,6 @@ const Spec = styled.div`
 
 function SpecTable(props) {
    const {line, product, shortnames, icon} = props.device;
-  // console.log(props)
   return (
     <Spec>
       <div className="img-wrapper">

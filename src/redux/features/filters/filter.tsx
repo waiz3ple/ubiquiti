@@ -30,6 +30,7 @@ const filterSlice = createSlice({
            element.isActive =  element.id === id;
         })
     },
+    
     clearActive: (state)=> {
       state.forEach(element=> {
         element.isActive = false;

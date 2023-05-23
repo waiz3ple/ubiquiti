@@ -63,8 +63,8 @@ function FilterPanel() {
     }
 
     const handleCloseButton = (event:React.MouseEvent<HTMLElement>) => {
-              dispatch(OpenPanel(false));
-              dispatch(clearActive())
+        dispatch(OpenPanel(false));
+        dispatch(clearActive())
     }
     
   return (
