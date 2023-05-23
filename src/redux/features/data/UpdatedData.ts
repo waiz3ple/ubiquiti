@@ -32,4 +32,4 @@ const updatedData =  createSlice({
 })
 
 export default updatedData.reducer;
-export const { loadData } =  updatedData.actions;
+export const { loadData, makeActive } =  updatedData.actions;

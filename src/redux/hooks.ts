@@ -6,7 +6,7 @@ import type { OriginalType, UpdatedType } from './types';
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useAppDispatch = () => useDispatch<AppDispatch>()
 
-//--------------------------
+
  //other custome hooks
 
 export function useSearchData(data: UpdatedType, searchTerm: string) {

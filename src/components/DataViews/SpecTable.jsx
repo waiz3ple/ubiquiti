@@ -11,7 +11,7 @@ const Spec = styled.div`
           //background-color: green;
           & img {
             width: 60%;
-            display:  ${({showSpecs}) => showSpecs ? 'block' : 'none'};
+            display: block;
             margin: auto;
           }
      }
@@ -49,7 +49,7 @@ const Spec = styled.div`
 } */
 
 function SpecTable(props) {
-   const {line, product, shortnames, icon} = props.device;
+   const {line, product, shortnames, icon } = props.device;
   return (
     <Spec>
       <div className="img-wrapper">

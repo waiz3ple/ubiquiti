@@ -2,7 +2,7 @@ import { act } from '@testing-library/react';
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import { fetchDevies } from '../../redux/features/data/Devices';
-import { loadData } from '../../redux/features/data/UpdatedData';
+import { loadData, makeActive } from '../../redux/features/data/UpdatedData';
 import { useAppDispatch, useAppSelector, useSearchData } from '../../redux/hooks';
 import { UpdatedType, deviceType } from '../../redux/types';
 import { includeActiveProp } from '../../redux/util';
@@ -66,8 +66,10 @@ const TableStyle = styled.table`
          grid-column: 2/-1;
          border:none;
          justify-content: start;
-         background-color:red;
-         display:none   // work here
+         display: none;
+       }
+       & .last-td.active {
+         display: block;
        }
      }
 `;
@@ -111,11 +113,11 @@ function TableList(){  // make this reusable
            </thead>
            <tbody>
               { filteredData.map((device: UpdatedType) => (
-              <tr key={device.id} >
+              <tr key={device.id}  onClick={()=> dispatch(makeActive(device.id))}>
                 <td><img src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_257x257.png`} alt={device.product.name}/></td>
                 <td>{device.line.name}</td>
                 <td>{device.product.name}</td>
-                <td className="last-td"><SpecTable showSpecs={device.isActive} device={device}/></td>
+                <td className={`last-td ${device.isActive?'active':''}`}><SpecTable  device={device}/></td>
               </tr>
           ))}
            </tbody>
