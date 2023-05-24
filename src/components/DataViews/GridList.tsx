@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { fetchDevies } from "../../redux/features/data/Devices";
 import { loadData } from "../../redux/features/data/UpdatedData";
 import { useAppDispatch, useAppSelector, useSearchData } from "../../redux/hooks";
-import { OriginalType, UpdatedType, deviceType } from "../../redux/types";
+import { OriginalType, UpdatedType } from "../../redux/types";
 import { includeActiveProp } from "../../redux/util";
 import Card from "./Card";
 

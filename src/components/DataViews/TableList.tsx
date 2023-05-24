@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { fetchDevies } from '../../redux/features/data/Devices';
 import { loadData, makeActive } from '../../redux/features/data/UpdatedData';
 import { useAppDispatch, useAppSelector, useSearchData } from '../../redux/hooks';
-import { UpdatedType, deviceType } from '../../redux/types';
+import { UpdatedType } from '../../redux/types';
 import { includeActiveProp } from '../../redux/util';
 import SpecTable from './SpecTable';
 const TableStyle = styled.table`
@@ -65,7 +65,6 @@ const TableStyle = styled.table`
        & td:last-child{
          grid-column: 2/-1;
          border:none;
-         justify-content: start;
          display: none;
        }
        & .last-td.active {

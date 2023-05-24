@@ -2,9 +2,11 @@ import { useState } from "react";
 import styled from "styled-components";
 import { CloseIcon, StopButton } from "./IconList";
 /* import { useDispatch, useSelector } from "react-redux/es/exports"; */
+import { loadData } from "../redux/features/data/UpdatedData";
 import { OpenPanel } from "../redux/features/filterPanel/Panel";
 import { clearActive, makeActive } from "../redux/features/filters/filter";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { filterOut, useAppDispatch, useAppSelector } from "../redux/hooks";
+import { UpdatedType } from "../redux/types";
 
 
 interface FilterWrapperProps {
@@ -53,18 +55,24 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
 
 
 function FilterPanel() {
-    //const panelOptions: string[] = ['UniFi', 'UniFiLTE', 'UniFiProtect', 'UniFiAccess', 'AirMax', 'EdgeMax'];
     const showPanel = useAppSelector((state)=> state.panel.isOpened);
+    const updatedData = useAppSelector( state=> state.updated)
     const dispatch = useAppDispatch();
     const filterOptions = useAppSelector(state => state.filter) 
     
-    const handleClick = (event:React.MouseEvent<HTMLLIElement>) => {
+
+    const handleClick = (event:React.MouseEvent<HTMLLIElement>, data: UpdatedType, filterBy: string,) => {
         dispatch(makeActive(event.currentTarget.id))
+        //--------------
+        const filteredResult =  filterOut(data, filterBy) 
+        dispatch( loadData(filteredResult) )
+        //--------------
     }
 
     const handleCloseButton = (event:React.MouseEvent<HTMLElement>) => {
         dispatch(OpenPanel(false));
         dispatch(clearActive())
+         //dispatch( loadData() )
     }
     
   return (
@@ -80,7 +88,7 @@ function FilterPanel() {
            <h3>Product line</h3>
            <ul>
              {filterOptions.map(({option, id, isActive}) =>(
-             <li key={id} id={id} onClick={handleClick}><StopButton isActive={isActive} size={20}/> {option}</li>
+             <li key={id} id={id} onClick={(event)=> handleClick(event, updatedData, option)}><StopButton isActive={isActive} size={20}/> {option}</li>
               ))}
            </ul>
        </div>

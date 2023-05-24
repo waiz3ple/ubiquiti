@@ -8,12 +8,12 @@ interface PanelOption {
 }
 
 const panelOptions: PanelOption[] = [
-  { option: 'UniFi', isActive: false, id: uuid() },
-  { option: 'UniFiLTE', isActive: false, id: uuid() },
+  { option: 'UniFi',        isActive: false, id: uuid() },
+  { option: 'UniFiLTE',     isActive: false, id: uuid() },
   { option: 'UniFiProtect', isActive: false, id: uuid() },
-  { option: 'UniFiAccess', isActive: false, id: uuid() },
-  { option: 'AirMax', isActive: false, id: uuid() },
-  { option: 'EdgeMax', isActive: false, id: uuid() },
+  { option: 'UniFiAccess',  isActive: false, id: uuid() },
+  { option: 'AirMax',       isActive: false, id: uuid() },
+  { option: 'EdgeMax',      isActive: false, id: uuid() },
 ];
 
 const filterSlice = createSlice({

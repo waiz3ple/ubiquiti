@@ -9,12 +9,17 @@ export const useAppDispatch = () => useDispatch<AppDispatch>()
 
  //other custome hooks
 
-export function useSearchData(data: UpdatedType, searchTerm: string) {
+export function useSearchData(dataOri: OriginalType, searchTerm: string, category:string='product') {
   const searchTermClean = searchTerm.replaceAll(/[\\\|\{\}\(\)\[\]\?\/\:\+\=\^\*]+/gm, ''); // Cleaned from Regex Reserved Chars
 
   return useMemo(() => {
-    return data.devices?.filter((item: OriginalType) =>
-      new RegExp(searchTermClean, 'ig').test(item.product.name)
+    return dataOri.devices?.filter((item: OriginalType) =>
+      new RegExp(searchTermClean, 'ig').test(item[category].name)
     );
-  }, [searchTerm, data]);
+  }, [searchTerm, dataOri]);
+}
+
+
+export function filterOut(data: UpdatedType, searchTerm:string, category:string ='line'){
+    return data?.filter( (item: UpdatedType) => item[category].name.toLowerCase().includes( searchTerm.toLowerCase() ))
 }

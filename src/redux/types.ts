@@ -1,7 +1,7 @@
 import { Key } from "react";
 
 
-export interface  deviceType{     // refactore XXXXXXXXXXXXXXXXXXXXXXXXX
+/* export interface  deviceType{     // refactore XXXXXXXXXXXXXXXXXXXXXXXXX
     id: string;
     icon: {
         id: string
@@ -22,7 +22,7 @@ export interface  deviceType{     // refactore XXXXXXXXXXXXXXXXXXXXXXXXX
       } 
     };
    
-    }
+    } */
 export interface OriginalType {
     id?: string;
     product: {
