@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { MainType, UpdatedType } from '../../types';
+import type { UpdatedType } from '../../Types';
 
 
 

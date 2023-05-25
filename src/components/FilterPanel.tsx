@@ -4,9 +4,9 @@ import { CloseIcon, StopButton } from "./IconList";
 /* import { useDispatch, useSelector } from "react-redux/es/exports"; */
 import { loadData } from "../redux/features/data/UpdatedData";
 import { OpenPanel } from "../redux/features/filterPanel/Panel";
-import { clearActive, makeActive } from "../redux/features/filters/filter";
-import { filterOut, useAppDispatch, useAppSelector } from "../redux/hooks";
-import { UpdatedType } from "../redux/types";
+import { clearActive, makeActiveOption } from "../redux/features/filters/Filter";
+import { filterOut, useAppDispatch, useAppSelector } from "../redux/Hooks";
+import { UpdatedType } from "../redux/Types";
 
 
 interface FilterWrapperProps {
@@ -44,8 +44,7 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
                 cursor:pointer;
                 .stop-button{
                     position: relative;
-                    top: .7rem;
-                    
+                    top: .7rem;   
                 }
             }
         }
@@ -59,20 +58,21 @@ function FilterPanel() {
     const updatedData = useAppSelector( state=> state.updated)
     const dispatch = useAppDispatch();
     const filterOptions = useAppSelector(state => state.filter) 
-    
-
-    const handleClick = (event:React.MouseEvent<HTMLLIElement>, data: UpdatedType, filterBy: string,) => {
-        dispatch(makeActive(event.currentTarget.id))
+    //-------------------------
+   // const [seachResult, setSearchResult] = useState(updatedData)
+    //-------------------------
+    function handleClick(event: React.MouseEvent<HTMLLIElement>, filterBy: string) {
+        dispatch(makeActiveOption(event.currentTarget.id));
         //--------------
-        const filteredResult =  filterOut(data, filterBy) 
-        dispatch( loadData(filteredResult) )
+        const filteredResult = filterOut(updatedData, filterBy);
+        dispatch(loadData(filteredResult));
         //--------------
     }
 
     const handleCloseButton = (event:React.MouseEvent<HTMLElement>) => {
         dispatch(OpenPanel(false));
         dispatch(clearActive())
-         //dispatch( loadData() )
+        //dispatch( loadData(seachResult) )
     }
     
   return (
@@ -87,8 +87,8 @@ function FilterPanel() {
        <div className="panelBody">
            <h3>Product line</h3>
            <ul>
-             {filterOptions.map(({option, id, isActive}) =>(
-             <li key={id} id={id} onClick={(event)=> handleClick(event, updatedData, option)}><StopButton isActive={isActive} size={20}/> {option}</li>
+             {filterOptions?.map(({option, id, isActive}) =>(
+             <li key={id} id={id} onClick={(event)=> handleClick(event, option)}><StopButton isActive={isActive} size={20}/> {option}</li>
               ))}
            </ul>
        </div>

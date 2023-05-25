@@ -8,12 +8,12 @@ interface PanelOption {
 }
 
 const panelOptions: PanelOption[] = [
-  { option: 'UniFi',        isActive: false, id: uuid() },
-  { option: 'UniFiLTE',     isActive: false, id: uuid() },
-  { option: 'UniFiProtect', isActive: false, id: uuid() },
-  { option: 'UniFiAccess',  isActive: false, id: uuid() },
-  { option: 'AirMax',       isActive: false, id: uuid() },
-  { option: 'EdgeMax',      isActive: false, id: uuid() },
+  { option: 'UniFi',         isActive: false, id: uuid() },
+  { option: 'UniFi LTE',     isActive: false, id: uuid() },
+  { option: 'UniFi Protect', isActive: false, id: uuid() },
+  { option: 'UniFi Access',  isActive: false, id: uuid() },
+  { option: 'AirMax',        isActive: false, id: uuid() },
+  { option: 'EdgeMax',       isActive: false, id: uuid() },
 ];
 
 const filterSlice = createSlice({
@@ -24,7 +24,7 @@ const filterSlice = createSlice({
       state.push({ option: action.payload, isActive: false, id: uuid() });
     },
 
-    makeActive: (state, action:PayloadAction<string>) =>{
+    makeActiveOption: (state, action:PayloadAction<string>) =>{
         const id = action.payload;
         state.forEach(element => {
            element.isActive =  element.id === id;
@@ -40,7 +40,7 @@ const filterSlice = createSlice({
 });
 
 export default filterSlice.reducer;
-export const { addOption, makeActive, clearActive } = filterSlice.actions;
+export const { addOption, makeActiveOption, clearActive } = filterSlice.actions;
  
 
 

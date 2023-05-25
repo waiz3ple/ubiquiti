@@ -8,7 +8,7 @@ import { BulletList, GridIcon } from '../components/IconList'
 
 import SearchBar from '../components/SearchBar'
 import { OpenPanel } from '../redux/features/filterPanel/Panel'
-import { useAppDispatch } from '../redux/hooks'
+import { useAppDispatch } from '../redux/Hooks'
 
 const ViewStyle = styled.div`
     margin: 2.5rem auto;

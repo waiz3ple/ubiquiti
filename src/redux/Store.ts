@@ -3,7 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import deviceReducer from './features/data/Devices';
 import updatedDataReducer from './features/data/UpdatedData';
 import panelReducer from './features/filterPanel/Panel';
-import filterReducer from './features/filters/filter';
+import filterReducer from './features/filters/Filter';
 import searchReducer from './features/search/Search';
 const store = configureStore({
     reducer: {

@@ -1,11 +1,11 @@
 import { AnyAction, AsyncThunkAction, Dispatch } from "@reduxjs/toolkit";
 import { Key, useEffect } from "react";
 import styled from "styled-components";
+import { useAppDispatch, useAppSelector, useSearch } from "../../redux/Hooks";
+import { OriginalType, UpdatedType } from "../../redux/Types";
+import { includeActiveProp } from "../../redux/Util";
 import { fetchDevies } from "../../redux/features/data/Devices";
 import { loadData } from "../../redux/features/data/UpdatedData";
-import { useAppDispatch, useAppSelector, useSearchData } from "../../redux/hooks";
-import { OriginalType, UpdatedType } from "../../redux/types";
-import { includeActiveProp } from "../../redux/util";
 import Card from "./Card";
 
 const Grid = styled.div`
@@ -21,39 +21,43 @@ const Grid = styled.div`
 `;
 
 function GridList(){
-    const devicesData = useAppSelector(state => state.devices);
+       //---------------------
+   const { loading, data, error } = useAppSelector(state => state.devices);
     const searchValue = useAppSelector((state)=> state.search.value);
-   
-    const dispatch = useAppDispatch()
     // decison: since it a static data, I will reduce the number of API request to one by creating seprate reducer for updated data
     useEffect(()=>{ 
         dispatch(fetchDevies())   
     },[])
     
     
-    const { loading, data, error } = devicesData;
-    const searchedDatas = useSearchData(data, searchValue)  // searched result
-    const activatedSearchData = includeActiveProp( searchedDatas ) // adding isActive properties to returning search result
-   
-    useEffect(()=>{  // 1. sending this updated result up to the loadData state.
-        dispatch(loadData(activatedSearchData))   
+    const searchedResult = useSearch(data, searchValue)  // searched result
+    const searchedResultActive = includeActiveProp( searchedResult ) // adding isActive properties to search result
+    const dispatch = useAppDispatch()
+    
+    useEffect(()=>{  // 1. sending this updated result up to the updated state.
+      dispatch(loadData(searchedResultActive))   
     },[searchValue])
-     const filteredData = useAppSelector(state => state.updated);
-     //console.log('yes',filteredData)
+    
+    
+    const updatedData = useAppSelector(state => state.updated);
+    // console.log('Table',filteredData)
+      
+    //---------------------
+   
     return (
    <div>
      {loading && searchValue && <div>Loading...</div>} {/*show load only when swaping layout*/}
      {!loading && error &&  (<div>Error: {error}</div>)}
-     {!loading &&  filteredData?.length && searchValue &&
+     {!loading && searchValue  &&
      <Grid>                                  
-        <p className="total-device">{`${filteredData.length} ${filteredData.length > 1 ? 'devices' : 'device' }`}</p>
+        <p className="total-device">{`${updatedData.length} ${updatedData.length > 1 ? 'devices' : 'device' }`}</p>
         <div className="card-wrapper">
-          { filteredData?.map(({id, product, line, icon}:UpdatedType) => (
+          {updatedData?.length ? updatedData?.map(({id, product, line, icon}:UpdatedType) => (
             <Card key={id}
             imgUrl={`https://static.ui.com/fingerprint/ui/icons/${icon.id}_257x257.png`}
             productName={product.name} 
             productLine={line.name} />
-          ))}
+          )):''}
         </div>
     </Grid>}
 </div>

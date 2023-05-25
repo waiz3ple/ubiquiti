@@ -1,46 +1,112 @@
-# Getting Started with Create React App
+# React Assessment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to Ubiquiti device search page for developers React. We have provided you with a starter template that includes some basic components and functionality.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Areas to Improve](#areas-to-improve)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To get started with the React Assessment project, follow these steps:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Clone this repository to your local machine using the following command:
+   ```
+   git clone https://github.com/your-username/react-assessment.git
+   ```
+2. Change into the project directory:
+   ```
+   cd react-assessment
+   ```
+3. Install the dependencies:
+   ```
+   npm install
+   ```
+4. Start the development server:
+   ```
+   npm start
+   ```
+   The application will be running at `http://localhost:3000` in your browser.
 
-### `npm test`
+## Usage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Once the development server is running, you can begin exploring and interacting with the React Assessment project. The project includes the following features:
 
-### `npm run build`
+- A home page with some dummy content.
+- Navigation bar with links to different sections.
+- Placeholder components that can be extended and customized.
+- Basic routing setup using React Router.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Feel free to modify and enhance the project to demonstrate your skills and understanding of React.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The structure of the project is as follows:
 
-### `npm run eject`
+```
+Ubiquiti-Proj/
+  |- public/
+  |- src/
+    |- assets/
+       |- fonts/
+       |- images/
+    |- components/
+       |- DataVies/
+       |- FilerPanel.jtsx
+       |- Header.jtsx
+       |- IconList.jtsx
+       |- SearchBar.jtsx
+    |- pages/
+       |- Home.tsx
+       |- NotFound.tsx
+    |- Redux/
+        |- features/
+            |- data/
+               |- Devices.ts
+               |- UpdatedData.ts
+            |- filterPanel/
+               |- Panel.ts
+            |- filters/
+               |- Filter.ts
+            |- search/
+               |- Search/
+            |-Store.ts
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    |- App.js
+    |- index.js
+    |- ...
+  |- ...
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The `public` directory contains the index HTML file and any other static assets. The `src` directory contains the main application code, including components and the root `App.js` file.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Areas to Improve
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+While assessing your skills, we will be looking for the following areas of improvement in the project:
 
-## Learn More
+- **Code Organization**: Ensure the code is well-structured and follows best practices for component organization, separation of concerns, and module imports.
+- **Styling**: Enhance the visual appeal of the application by improving the styling, using CSS frameworks, or implementing custom styles.
+- **Error Handling**: Implement proper error handling and validation where applicable, providing clear and user-friendly error messages.
+- **Testing**: Add unit tests or integration tests to verify the functionality of the components and features.
+- **Performance**: Optimize the performance of the application by identifying any bottlenecks or inefficiencies and implementing improvements.
+- **Accessibility**: Ensure the application is accessible to users with disabilities by following accessibility guidelines and best practices.
+- **Documentation**: Add relevant comments, inline documentation, or JSDoc annotations to explain complex code blocks or functions.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+These are just a few suggestions, and you are encouraged to go beyond these areas and impress us with your skills and creativity!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributing
+
+We appreciate your interest in contributing to this project. If you have any suggestions, bug reports, or feature requests, please open an issue in this repository.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+Thank you for participating in the React Assessment! We look forward to seeing your work and wish you the best of luck. If you have any questions or need any assistance, feel free to reach out to us.

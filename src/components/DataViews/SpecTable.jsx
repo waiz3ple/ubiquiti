@@ -5,10 +5,7 @@ const Spec = styled.div`
      display: grid;
      grid-template-columns: 2fr 5fr;
     
-     //background-color: red;
-
      & .img-wrapper {
-          //background-color: green;
           & img {
             width: 60%;
             display: block;
@@ -23,8 +20,6 @@ const Spec = styled.div`
          & > tbody  tr{
             display: grid;
             grid-template-columns: repeat(2,  1fr);
-            
-            //background-color: red;
             
             & td{
               display: grid;

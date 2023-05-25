@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useAppDispatch, useAppSelector } from '../redux/Hooks';
 import { clearSearch, deviceSearch } from '../redux/features/search/Search';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { CloseIcon, SearchIcon } from './IconList';
 
 const SearchBarWrapper = styled.div`

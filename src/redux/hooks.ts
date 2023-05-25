@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import type { AppDispatch, RootState } from './store';
-import type { OriginalType, UpdatedType } from './types';
+import type { AppDispatch, RootState } from './Store';
+import type { OriginalType, UpdatedType } from './Types';
 
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useAppDispatch = () => useDispatch<AppDispatch>()
@@ -9,14 +9,20 @@ export const useAppDispatch = () => useDispatch<AppDispatch>()
 
  //other custome hooks
 
-export function useSearchData(dataOri: OriginalType, searchTerm: string, category:string='product') {
+export function useSearch(dataOri: OriginalType, searchTerm: string, category:string='product') {
   const searchTermClean = searchTerm.replaceAll(/[\\\|\{\}\(\)\[\]\?\/\:\+\=\^\*]+/gm, ''); // Cleaned from Regex Reserved Chars
 
-  return useMemo(() => {
+  /* return useMemo(() => {
     return dataOri.devices?.filter((item: OriginalType) =>
       new RegExp(searchTermClean, 'ig').test(item[category].name)
     );
-  }, [searchTerm, dataOri]);
+  }, [searchTerm, dataOri]); */
+
+   
+    return dataOri.devices?.filter((item: OriginalType) =>
+      new RegExp(searchTermClean, 'ig').test(item[category].name)
+    );
+
 }
 
 

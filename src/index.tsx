@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider as ReduxProvider } from 'react-redux';
 import App from './App';
 import GlobalStyle from './GlobalStyles';
-import store from './redux/store';
+import store from './redux/Store';
  
 
 

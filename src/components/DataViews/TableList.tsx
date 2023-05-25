@@ -1,11 +1,11 @@
 import { act } from '@testing-library/react';
 import { useEffect } from 'react';
 import styled from 'styled-components';
+import { useAppDispatch, useAppSelector, useSearch } from '../../redux/Hooks';
+import { UpdatedType } from '../../redux/Types';
+import { includeActiveProp } from '../../redux/Util';
 import { fetchDevies } from '../../redux/features/data/Devices';
 import { loadData, makeActive } from '../../redux/features/data/UpdatedData';
-import { useAppDispatch, useAppSelector, useSearchData } from '../../redux/hooks';
-import { UpdatedType } from '../../redux/types';
-import { includeActiveProp } from '../../redux/util';
 import SpecTable from './SpecTable';
 const TableStyle = styled.table`
   width: 100%;  
@@ -65,60 +65,62 @@ const TableStyle = styled.table`
        & td:last-child{
          grid-column: 2/-1;
          border:none;
-         display: none;
+         display:none;
        }
-       & .last-td.active {
-         display: block;
-       }
+       & > .last-td.active{ display:block}
      }
 `;
 
 
 function TableList(){  // make this reusable
     //---------------------
-    const devicesData = useAppSelector(state => state.devices);
+   const { loading, data, error } = useAppSelector(state => state.devices);
     const searchValue = useAppSelector((state)=> state.search.value);
-   
-    const dispatch = useAppDispatch()
     // decison: since it a static data, I will reduce the number of API request to one by creating seprate reducer for updated data
     useEffect(()=>{ 
         dispatch(fetchDevies())   
     },[])
     
     
-    const { loading, data, error } = devicesData;
-    const searchedDatas = useSearchData(data, searchValue)  // searched result
-    const activatedSearchData = includeActiveProp( searchedDatas ) // adding isActive properties to returning search result
-   
-    useEffect(()=>{  // 1. sending this updated result up to the loadData state.
-        dispatch(loadData(activatedSearchData))   
+    const searchedResult = useSearch(data, searchValue)  // searched result
+    const searchedResultActive = includeActiveProp( searchedResult ) // adding isActive properties to search result
+    const dispatch = useAppDispatch()
+    
+    useEffect(()=>{  // 1. sending this updated result up to the updatedData state.
+      dispatch(loadData(searchedResultActive))   
     },[searchValue])
-     const filteredData = useAppSelector(state => state.updated);
-     console.log('table',filteredData)
-
+    
+    const updatedData = useAppSelector(state => state.updated);
+    // console.log('Table',filteredData)
+      
     //---------------------
     return (
       <div>
         {loading && searchValue && <div>Loading...</div>}
         {!loading && error &&  (<div>Error: {error}</div>)}
-        {!loading &&  filteredData?.length  && searchValue &&
+        {!loading   && searchValue &&
          <TableStyle>
            <thead>
               <tr>
-                <th>{`${filteredData.length} ${filteredData.length > 1 ? 'devices' : 'device' }`}</th>
+                <th>{`${updatedData?.length} ${updatedData?.length > 1 ? 'devices' : 'device' }`}</th>
                 <th>Productline</th>
                 <th>Name</th>
               </tr>
            </thead>
            <tbody>
-              { filteredData.map((device: UpdatedType) => (
+              {  updatedData?.length ? updatedData?.map((device: UpdatedType) => (
               <tr key={device.id}  onClick={()=> dispatch(makeActive(device.id))}>
-                <td><img src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_257x257.png`} alt={device.product.name}/></td>
+                <td><img 
+                    src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_257x257.png`} 
+                    alt={device.product.name}/>
+                </td>
                 <td>{device.line.name}</td>
                 <td>{device.product.name}</td>
-                <td className={`last-td ${device.isActive?'active':''}`}><SpecTable  device={device}/></td>
+                <td className={`${device.isActive? 'last-td active' :'last-td'}`}>
+                   <SpecTable  device={device}/>
+                </td>
               </tr>
-          ))}
+          )):''}
            </tbody>
          </TableStyle>
         }
