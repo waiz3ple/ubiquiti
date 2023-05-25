@@ -66,8 +66,10 @@ const TableStyle = styled.table`
          grid-column: 2/-1;
          border:none;
          display:none;
+         &.active{
+          display:block  /* the active one will only have access */
+         }
        }
-       & > .last-td.active{ display:block}
      }
 `;
 
