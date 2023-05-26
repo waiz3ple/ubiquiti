@@ -22,16 +22,3 @@ export function filterOut(data: UpdatedType, searchTerm:string, category:string 
     return data.filter( (item: UpdatedType) => item[category].name.toLowerCase().includes( searchTerm.toLowerCase() ))
 } 
 
-
-/* export function searchOutter(dataOri: OriginalType, searchTerm: string, category:string='product') {
-  const searchTermClean = searchTerm.replaceAll(/[\\\|\{\}\(\)\[\]\?\/\:\+\=\^\*]+/gm, ''); // Cleaned from Regex Reserved Chars   
-    return dataOri.devices?.filter((item: OriginalType) =>
-      new RegExp(searchTermClean, 'ig').test(item[category].name)
-    );
-
-}
-
-
-export function filterOutter(data: UpdatedType, searchTerm:string, category:string ='line'){
-    return data.filter( (item: UpdatedType) => item[category].name.toLowerCase().includes( searchTerm.toLowerCase() ))
-} */

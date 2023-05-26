@@ -14,6 +14,9 @@ const initialState : UpdatedType = {
     },
     icon: {
         id: ''
+    },
+    filter: function (arg0: (item: UpdatedType) => any): unknown {
+        throw new Error('Function not implemented.');
     }
 }
 

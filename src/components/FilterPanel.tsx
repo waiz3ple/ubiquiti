@@ -46,6 +46,9 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
                     position: relative;
                     top: .7rem;   
                 }
+               &:disabled{
+                 color: red
+               }
             }
         }
     }
@@ -54,31 +57,20 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
 
 
 function FilterPanel() {
-    const filterOptions = useAppSelector(state => state.filter) 
-    const updatedData   = useAppSelector(state => state.updated)
-    const stableData    = useAppSelector(state => state.stable)
-    const searchValue   = useAppSelector(state => state.search.value);
-    const showPanel     = useAppSelector(state => state.panel.isOpened);
+    const { filter, stable, panel, search } = useAppSelector(state => state) 
+    const { isOpened : showPanel } = panel;
     const dispatch = useAppDispatch();
-    //-------------------------
-   /*  const [searchResult, setSearchResult] = useState<UpdatedType>(updatedData/* [] as unknown as UpdatedType */
-    // useEffect(()=> setSearchResult(updatedData),[searchValue, updatedData]) // update local state only when search is perform, this keeps search data  */
-    console.log('searchResult', stableData)
-     //-------------------------
+   
     function handleClick(event: React.MouseEvent<HTMLLIElement>, filterBy: string) {
+        const filteredResult = filterOut(stable, filterBy);
         dispatch(makeActiveOption(event.currentTarget.id));
-        //--------------
-        const filteredResult = filterOut(stableData, filterBy);
         dispatch(loadData(filteredResult));
-        //--------------
     }
 
     function handleCloseButton(event: React.MouseEvent<HTMLElement>) {
         dispatch(OpenPanel(false));
         dispatch(clearActive());
-        //-----------------------------------------load current search value
-         dispatch( loadData(stableData) ) 
-        //-----------------------------------------
+        dispatch(loadData(stable)) 
     }
     
   return (
@@ -93,7 +85,7 @@ function FilterPanel() {
        <div className="panelBody">
            <h3>Product line</h3>
            <ul>
-             {filterOptions?.map(({option, id, isActive}) =>(
+             {filter?.map(({option, id, isActive}) =>(
              <li key={id} id={id} onClick={(event)=> handleClick(event, option)}><StopButton isActive={isActive} size={20}/> {option}</li>
               ))}
            </ul>

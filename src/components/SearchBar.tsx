@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../redux/Hooks';
+import { clearActive } from '../redux/features/filters/Filter';
 import { clearSearch, deviceSearch } from '../redux/features/search/Search';
 import { CloseIcon, SearchIcon } from './IconList';
 
@@ -56,17 +57,28 @@ function SearchBar() {
   const dispatch = useAppDispatch();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>)=>{
-   dispatch(deviceSearch(event.target.value))      
+   dispatch(deviceSearch(event.target.value)) 
+    dispatch(clearActive());     
+}
+
+const handleClearSearch = ()=> {
+     dispatch(clearSearch())
+     dispatch(clearActive());
 }
   return (
     <SearchBarWrapper>
         <label htmlFor='search'>
            <SearchIcon />
         </label>
-       <input type="search" name="search" id="search" placeholder='Search' value={searchValue}
-        onChange={handleChange}
+       <input 
+          type="search" 
+          name="search" 
+          id="search" 
+          placeholder='Search' 
+          value={searchValue}
+          onChange={handleChange}
        />
-       <div onClick={()=> dispatch(clearSearch()) }>
+       <div onClick={ handleClearSearch }>
           <CloseIcon/>
        </div>
     </SearchBarWrapper>

@@ -1,3 +1,5 @@
+import { Key } from "react";
+
 
 export interface OriginalType {
     id?: string;
@@ -11,7 +13,7 @@ export interface OriginalType {
         id: string;
     };
 
-   [x: string]: any; // extra properties
+   [others : string]: any; // extra properties
 }
 
 export interface UpdatedType extends OriginalType {
