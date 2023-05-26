@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/ubiquiti/static/js/main.69bfdaab.js",
+    "static/media/Inter-Regular.otf": "/ubiquiti/static/media/Inter-Regular.e9b898342ed8036ee8ea.otf",
+    "static/media/image.svg": "/ubiquiti/static/media/image.91638955dfc8dcdcb401462907fc26e3.svg",
+    "index.html": "/ubiquiti/index.html",
+    "main.69bfdaab.js.map": "/ubiquiti/static/js/main.69bfdaab.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.69bfdaab.js"
+  ]
+}
