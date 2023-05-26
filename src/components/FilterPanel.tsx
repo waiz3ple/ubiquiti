@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import styled from "styled-components";
 import { CloseIcon, StopButton } from "./IconList";
 /* import { useDispatch, useSelector } from "react-redux/es/exports"; */
@@ -54,25 +54,31 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
 
 
 function FilterPanel() {
-    const showPanel = useAppSelector((state)=> state.panel.isOpened);
-    const updatedData = useAppSelector( state=> state.updated)
-    const dispatch = useAppDispatch();
     const filterOptions = useAppSelector(state => state.filter) 
+    const updatedData   = useAppSelector(state => state.updated)
+    const stableData    = useAppSelector(state => state.stable)
+    const searchValue   = useAppSelector(state => state.search.value);
+    const showPanel     = useAppSelector(state => state.panel.isOpened);
+    const dispatch = useAppDispatch();
     //-------------------------
-   // const [seachResult, setSearchResult] = useState(updatedData)
-    //-------------------------
+   /*  const [searchResult, setSearchResult] = useState<UpdatedType>(updatedData/* [] as unknown as UpdatedType */
+    // useEffect(()=> setSearchResult(updatedData),[searchValue, updatedData]) // update local state only when search is perform, this keeps search data  */
+    console.log('searchResult', stableData)
+     //-------------------------
     function handleClick(event: React.MouseEvent<HTMLLIElement>, filterBy: string) {
         dispatch(makeActiveOption(event.currentTarget.id));
         //--------------
-        const filteredResult = filterOut(updatedData, filterBy);
+        const filteredResult = filterOut(stableData, filterBy);
         dispatch(loadData(filteredResult));
         //--------------
     }
 
-    const handleCloseButton = (event:React.MouseEvent<HTMLElement>) => {
+    function handleCloseButton(event: React.MouseEvent<HTMLElement>) {
         dispatch(OpenPanel(false));
-        dispatch(clearActive())
-        //dispatch( loadData(seachResult) )
+        dispatch(clearActive());
+        //-----------------------------------------load current search value
+         dispatch( loadData(stableData) ) 
+        //-----------------------------------------
     }
     
   return (

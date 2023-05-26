@@ -6,6 +6,7 @@ import { OriginalType, UpdatedType } from "../../redux/Types";
 import { includeActiveProp } from "../../redux/Util";
 import { fetchDevies } from "../../redux/features/data/Devices";
 import { loadData } from "../../redux/features/data/UpdatedData";
+import { loadStableData } from "../../redux/features/data/UpdatedStableData";
 import Card from "./Card";
 
 const Grid = styled.div`
@@ -35,7 +36,8 @@ function GridList(){
     const dispatch = useAppDispatch()
     
     useEffect(()=>{  // 1. sending this updated result up to the updated state.
-      dispatch(loadData(searchedResultActive))   
+      dispatch(loadData(searchedResultActive)) 
+      dispatch(loadStableData(searchedResultActive))     
     },[searchValue])
     
     

@@ -7,6 +7,7 @@ import { includeActiveProp } from '../../redux/Util';
 import { fetchDevies } from '../../redux/features/data/Devices';
 import { loadData, makeActive } from '../../redux/features/data/UpdatedData';
 import SpecTable from './SpecTable';
+import { loadStableData } from '../../redux/features/data/UpdatedStableData';
 const TableStyle = styled.table`
   width: 100%;  
   border-collapse: collapse;
@@ -90,10 +91,10 @@ function TableList(){  // make this reusable
     
     useEffect(()=>{  // 1. sending this updated result up to the updatedData state.
       dispatch(loadData(searchedResultActive))   
+      dispatch(loadStableData(searchedResultActive))   
     },[searchValue])
     
     const updatedData = useAppSelector(state => state.updated);
-    // console.log('Table',filteredData)
       
     //---------------------
     return (
@@ -110,7 +111,7 @@ function TableList(){  // make this reusable
               </tr>
            </thead>
            <tbody>
-              {  updatedData?.length ? updatedData?.map((device: UpdatedType) => (
+              {updatedData?.length ? updatedData?.map((device: UpdatedType) => (
               <tr key={device.id}  onClick={()=> dispatch(makeActive(device.id))}>
                 <td><img 
                     src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_257x257.png`} 
