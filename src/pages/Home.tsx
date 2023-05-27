@@ -69,10 +69,12 @@ function Home() {
          <ToolbarWrapper>
            <SearchBar/>
             <NavIcons>
-               <NavLink to='/'>
+              {/*  <NavLink to='/'> */}
+               <NavLink to='/ubiquiti'>  {/* remove! only for github */}
                    <BulletList size={30} />
                </NavLink>
-               <NavLink to="/grid">
+              {/*  <NavLink to="/grid"> */}
+               <NavLink to="/ubiquiti/grid">   {/* remove! only for github */}
                     <GridIcon size={25}/>
                </NavLink>
                <button className="filter" onClick={()=> dispatch(OpenPanel(true))}>Filter</button>
@@ -81,9 +83,6 @@ function Home() {
            <FilterPanel/>
         </ToolbarWrapper>
         <ViewStyle>
-       {/*  <SpecTable/> */}
-        {/* <TableList/>  */}
-       {/* <GridList/>   */}
           <Outlet/>
       </ViewStyle>
     </div>

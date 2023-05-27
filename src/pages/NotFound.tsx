@@ -19,9 +19,8 @@ const NotFoundWrapper = styled.div`
       margin: 1rem 0;
       font-size: 1.2rem;
     }
-
-    & a{ }
 `;
+
 function NotFound() {
   return (
     <NotFoundWrapper>
@@ -29,7 +28,8 @@ function NotFound() {
        <h1 className="title">It seems you hit a snag!</h1>
        <p>Sorry, the page you are requesting is not avaliable</p>
        <Button>
-          <Link to={'/'}>Go back Home</Link>
+          <Link to={'/ubiquiti'}>Go back Home</Link>  {/* remove! only for github */}
+          {/* <Link to={'/'}>Go back Home</Link> */}  
        </Button>
     </NotFoundWrapper>
   )
