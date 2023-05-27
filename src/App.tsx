@@ -12,7 +12,8 @@ import NotFound from './pages/NotFound';
 
 const router = createBrowserRouter(
                createRoutesFromElements(
-          <Route path="/" element={<Home/>}>
+         /*  <Route path="/" element={<Home/>}> */
+          <Route path="/ubiquiti" element={<Home/>}>  {/* remove! only for github */}
               <Route index element={<TableList/>}/>
               <Route path="grid" element={<GridList/>}/>
               <Route path="*" element={<NotFound/>}/>
