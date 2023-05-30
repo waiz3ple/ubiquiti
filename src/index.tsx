@@ -13,12 +13,10 @@ import store from './redux/Store';
 const root = ReactDOM.createRoot( document.getElementById('root') as HTMLElement);
 root.render(
   <QueryClientProvider client={new QueryClient()}>
-   
       <GlobalStyle/>
       <ReduxProvider store={store}>
          <App />
-      </ReduxProvider>
-     
+      </ReduxProvider> 
   </QueryClientProvider>
   
 );

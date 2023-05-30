@@ -4,9 +4,10 @@ import styled from "styled-components";
 import { useAppDispatch, useAppSelector, useSearch } from "../../redux/Hooks";
 import { OriginalType, UpdatedType } from "../../redux/Types";
 import { includeActiveProp } from "../../redux/Util";
-import { fetchDevies } from "../../redux/features/data/Devices";
+import { fetchDevices } from "../../redux/features/data/Devices";
 import { loadData } from "../../redux/features/data/UpdatedData";
 import { loadStableData } from "../../redux/features/data/UpdatedStableData";
+import GridLoader from "../loaders/GridLoader";
 import Card from "./Card";
 
 const Grid = styled.div`
@@ -27,7 +28,7 @@ function GridList(){
     const searchValue = useAppSelector((state)=> state.search.value);
     // decison: since it a static data, I will reduce the number of API request to one by creating seprate reducer for updated data
     useEffect(()=>{ 
-        dispatch(fetchDevies())   
+        dispatch(fetchDevices())   
     },[])
     
     
@@ -48,7 +49,7 @@ function GridList(){
    
     return (
    <div>
-     {loading && searchValue && <div>Loading...</div>} {/*show load only when swaping layout*/}
+     {loading && searchValue && <GridLoader/>} {/*show load only when swaping layout*/}
      {!loading && error &&  (<div>Error: {error}</div>)}
      {!loading && searchValue  &&
      <Grid>                                  

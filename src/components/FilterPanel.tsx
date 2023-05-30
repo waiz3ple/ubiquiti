@@ -1,12 +1,11 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import styled from "styled-components";
-import { CloseIcon, StopButton } from "./IconList";
-/* import { useDispatch, useSelector } from "react-redux/es/exports"; */
+import { filterOut, useAppDispatch, useAppSelector } from "../redux/Hooks";
+import { UpdatedType } from "../redux/Types";
 import { loadData } from "../redux/features/data/UpdatedData";
 import { OpenPanel } from "../redux/features/filterPanel/Panel";
 import { clearActive, makeActiveOption } from "../redux/features/filters/Filter";
-import { filterOut, useAppDispatch, useAppSelector } from "../redux/Hooks";
-import { UpdatedType } from "../redux/Types";
+import { CloseIcon, StopButton } from "./IconList";
 
 
 interface FilterWrapperProps {
@@ -29,7 +28,11 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
         justify-content: space-between;
         border-bottom: 1px solid var(--color-grey-3);
         padding: 0 1.5rem;
-        align-items: center;   
+        align-items: center; 
+        
+        & > p {
+            font-family: inherit;
+        }
     }
     
     & .panelBody{
@@ -62,9 +65,11 @@ function FilterPanel() {
     const dispatch = useAppDispatch();
    
     function handleClick(event: React.MouseEvent<HTMLLIElement>, filterBy: string) {
-        const filteredResult = filterOut(stable, filterBy);
-        dispatch(makeActiveOption(event.currentTarget.id));
-        dispatch(loadData(filteredResult));
+        if(stable.length){  // only work if there data to filter
+           const filteredResult = filterOut(stable, filterBy);
+           dispatch(makeActiveOption(event.currentTarget.id));
+           dispatch(loadData(filteredResult));
+        }
     }
 
     function handleCloseButton(event: React.MouseEvent<HTMLElement>) {

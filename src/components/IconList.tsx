@@ -1,16 +1,4 @@
-// icon props are optional; 
-interface iconPropsType {
-    size?: number;
-    strokeWidth?: number;
-    fill?: 'none' | 'currentColor'|'inherit';
-    isActive?:boolean;
-}
-
-const param = {
-    size: 15,
-    fill: 'none',
-    strokeWidth:1.5
-}
+import { iconPropsType } from "../redux/Types"
 
 //seach icon🔍
 export function SearchIcon({ size = 15, fill ='none', strokeWidth = 1.5}: iconPropsType){

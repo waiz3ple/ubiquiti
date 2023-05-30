@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { UpdatedType } from '../../Types';
+import type { MainType, OriginalType, UpdatedType } from '../../Types';
 
 
 
-const initialState : UpdatedType = {
+export const initialState: UpdatedType = {
     id: '',
     isActive: false,
     product: {
@@ -15,9 +15,10 @@ const initialState : UpdatedType = {
     icon: {
         id: ''
     },
-    filter: function (arg0: (item: UpdatedType) => any): unknown {
-        throw new Error('Function not implemented.');
-    }
+    devices: {
+        filter: undefined
+        }
+
 }
 
 const updatedStableData =  createSlice({

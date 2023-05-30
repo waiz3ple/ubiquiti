@@ -1,13 +1,13 @@
-import { act } from '@testing-library/react';
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import { useAppDispatch, useAppSelector, useSearch } from '../../redux/Hooks';
 import { UpdatedType } from '../../redux/Types';
 import { includeActiveProp } from '../../redux/Util';
-import { fetchDevies } from '../../redux/features/data/Devices';
+import { fetchDevices } from '../../redux/features/data/Devices';
 import { loadData, makeActive } from '../../redux/features/data/UpdatedData';
-import SpecTable from './SpecTable';
 import { loadStableData } from '../../redux/features/data/UpdatedStableData';
+import ListLoader from '../loaders/ListLoader';
+import SpecTable from './SpecTable';
 const TableStyle = styled.table`
   width: 100%;  
   border-collapse: collapse;
@@ -15,7 +15,6 @@ const TableStyle = styled.table`
   & > thead > tr, tbody > tr{
      display: grid;
      grid-template-columns: 1fr 3fr 10fr;
-     //border-top: 1px solid red;
      border-bottom: 1px solid var(--color-grey-3);
   }
      
@@ -24,7 +23,7 @@ const TableStyle = styled.table`
        
        text-align: left;
        padding: .5rem 2rem; 
-       align-content: center; /*  hmm, fix this  */
+       align-content: center;
        
        &:first-child{
         justify-items: center;
@@ -49,11 +48,7 @@ const TableStyle = styled.table`
 
      & tbody{
        font-size: 1.1rem;
-        &  tr{
-         // border: 1px solid red;
-        }
-       & tr:not(td:last-child){  // fix this too!
-        cursor:pointer;
+       & tr:not(td:last-child){  
        }
        
        & img{
@@ -81,7 +76,7 @@ function TableList(){  // make this reusable
     const searchValue = useAppSelector((state)=> state.search.value);
     // decison: since it a static data, I will reduce the number of API request to one by creating seprate reducer for updated data
     useEffect(()=>{ 
-        dispatch(fetchDevies())   
+        dispatch(fetchDevices())   
     },[])
     
     
@@ -99,13 +94,13 @@ function TableList(){  // make this reusable
     //---------------------
     return (
       <div>
-        {loading && searchValue && <div>Loading...</div>}
+        {loading && searchValue && <ListLoader/>}
         {!loading && error &&  (<div>Error: {error}</div>)}
         {!loading   && searchValue &&
          <TableStyle>
            <thead>
               <tr>
-                <th>{`${updatedData?.length} ${updatedData?.length > 1 ? 'devices' : 'device' }`}</th>
+                <th>{`${updatedData?.length ?? 0 } ${updatedData?.length > 1 ? 'devices' : 'device' }`}</th>
                 <th>Productline</th>
                 <th>Name</th>
               </tr>
@@ -119,7 +114,7 @@ function TableList(){  // make this reusable
                 </td>
                 <td>{device.line.name}</td>
                 <td>{device.product.name}</td>
-                <td className={`${device.isActive? 'last-td active' :'last-td'}`}>
+                <td className={`${device.isActive?'last-td active':'last-td'}`}>
                    <SpecTable  device={device}/>
                 </td>
               </tr>

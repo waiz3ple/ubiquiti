@@ -19,6 +19,6 @@ export function useSearch(dataOri: OriginalType, searchTerm: string, category:st
 
 
 export function filterOut(data: UpdatedType, searchTerm:string, category:string ='line'){
-    return data.filter( (item: UpdatedType) => item[category].name.toLowerCase().includes( searchTerm.toLowerCase() ))
+    return data?.filter( (item: UpdatedType) => item[category].name.toLowerCase().includes( searchTerm.toLowerCase() ))
 } 
 

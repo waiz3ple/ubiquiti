@@ -7,8 +7,11 @@ import Header from '../components/Header'
 import { BulletList, GridIcon } from '../components/IconList'
 
 import SearchBar from '../components/SearchBar'
-import { OpenPanel } from '../redux/features/filterPanel/Panel'
+import GridLoader, { SkeletonCard } from '../components/loaders/GridLoader'
+import ListLoader from '../components/loaders/ListLoader'
+import UbiguitiLoadSpinner from '../components/loaders/UbiquitiLoadSpinner'
 import { useAppDispatch } from '../redux/Hooks'
+import { OpenPanel } from '../redux/features/filterPanel/Panel'
 
 const ViewStyle = styled.div`
     margin: 2.5rem auto;
@@ -60,7 +63,6 @@ const NavIcons  = styled.div`
    }
 `;
 
-
 function Home() {
    const dispatch = useAppDispatch();
   return (
@@ -79,14 +81,16 @@ function Home() {
                </NavLink>
                <button className="filter" onClick={()=> dispatch(OpenPanel(true))}>Filter</button>
             </NavIcons>
-
            <FilterPanel/>
         </ToolbarWrapper>
         <ViewStyle>
-          <Outlet/>
+          {/* <UbiguitiLoadSpinner/>  */}   {/*  <ListLoader/> */}       
+             {/*  <GridLoader/>  */}       <Outlet/> 
       </ViewStyle>
     </div>
   )
 }
 
 export default Home
+
+

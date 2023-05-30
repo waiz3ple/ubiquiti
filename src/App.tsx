@@ -22,18 +22,6 @@ const router = createBrowserRouter(
           )
      )
 
-const App = () => {
-   const { data, isLoading, isError } = useQuery('ubquiti-api', ()=> {
-     return axios.get('https://static.ui.com/fingerprint/ui/public.json')
-    })
-//console.log(data)
-  return (
-       /*  {/* <main>
-           <Home/>
-           <NotFound/> 
-        </main> */ 
-        <RouterProvider router={router}/>
-  );
-}
+const App = () =>   <RouterProvider router={router}/>
 
 export default App;

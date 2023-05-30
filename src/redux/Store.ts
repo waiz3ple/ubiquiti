@@ -14,8 +14,7 @@ const store = configureStore({
         filter:  filterReducer,
         updated: updatedDataReducer,
         stable: updatedStableData,
-    }
-    
+    }  
 })
 
 export default store;

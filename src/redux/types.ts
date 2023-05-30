@@ -1,5 +1,9 @@
-import { Key } from "react";
-
+export interface iconPropsType {
+    size?: number;
+    strokeWidth?: number;
+    fill?: 'none' | 'currentColor'|'inherit';
+    isActive?:boolean;
+}
 
 export interface OriginalType {
     id?: string;

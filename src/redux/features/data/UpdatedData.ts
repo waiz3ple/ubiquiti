@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { UpdatedType } from '../../Types';
+import { initialState } from './UpdatedStableData';
 
 
 
-const initialState : UpdatedType = {
+/* export const initialState : UpdatedType = {
     id: '',
     isActive: false,
     product: {
@@ -15,7 +16,7 @@ const initialState : UpdatedType = {
     icon: {
         id: ''
     }
-}
+} */
 
 const updatedData =  createSlice({
     name: 'updatedData', /* this data will contain isActive and will be used on filters features */

@@ -1,7 +1,11 @@
 import { v4 as uuid } from 'uuid';
 import { OriginalType, UpdatedType } from './Types';
+
+
 // add id and isActive property to our searched result 
 // [{x:'x'}, {y:'y'}]  => [{x:'x', id:123, isActtive: false}, {y:'y', id: 283, isActtive: false}]
+
+
 export function includeActiveProp(originalData: OriginalType): UpdatedType {
    return originalData?.map((item: OriginalType) => ({
     ...item,
@@ -9,3 +13,10 @@ export function includeActiveProp(originalData: OriginalType): UpdatedType {
     isActive: false,
   }));
 }
+
+
+export const timeoutPromise = (duration: number = 5000) => new Promise(( _, reject) =>{
+    setTimeout(() => {
+      return reject( new Error('Request Timed Out!'))
+    }, duration);
+  }) 

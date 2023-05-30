@@ -39,13 +39,19 @@ const SearchBarWrapper = styled.div`
         background: transparent;
         appearance: none;
         color: var(--color-grey-5);
-        
+        font-family: inherit;
+
         &:focus{
             outline: none;
         }
         
         &::-webkit-search-cancel-button{
           display: none;
+        }
+        &::-webkit-input-placeholder{
+          font-size: 1rem;
+          color: currentColor;
+          font-family: inherit;
         }
         
     }
