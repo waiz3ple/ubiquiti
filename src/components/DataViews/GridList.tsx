@@ -1,19 +1,26 @@
 import { AnyAction, AsyncThunkAction, Dispatch } from "@reduxjs/toolkit";
 import { Key, useEffect } from "react";
 import styled from "styled-components";
+import NotFound from "../../pages/NotFound";
 import { useAppDispatch, useAppSelector, useSearch } from "../../redux/Hooks";
 import { OriginalType, UpdatedType } from "../../redux/Types";
-import { includeActiveProp } from "../../redux/Util";
+import { includeActiveProp, processError } from "../../redux/Util";
 import { fetchDevices } from "../../redux/features/data/Devices";
 import { loadData } from "../../redux/features/data/UpdatedData";
 import { loadStableData } from "../../redux/features/data/UpdatedStableData";
 import GridLoader from "../loaders/GridLoader";
 import Card from "./Card";
 
-const Grid = styled.div`
+interface LoadAndErrorType{
+    loading: boolean;
+    error: string|undefined
+}
+
+const Grid = styled.div<LoadAndErrorType>`
     & .total-device{
         color: var(--color-grey-4);
         padding: 0 3rem 1rem;
+        visibility: ${({loading, error}) => (!loading && error)? 'hidden':'visible'}
     }
    & .card-wrapper{
        display: grid;
@@ -50,10 +57,10 @@ function GridList(){
     return (
    <div>
      {loading && searchValue && <GridLoader/>} {/*show load only when swaping layout*/}
-     {!loading && error &&  (<div>Error: {error}</div>)}
+     {!loading && error &&  (NotFound(processError(error)))}
      {!loading && searchValue  &&
-     <Grid>                                  
-        <p className="total-device">{`${updatedData.length} ${updatedData.length > 1 ? 'devices' : 'device' }`}</p>
+     <Grid loading={loading} error={error}>                                  
+        <p className="total-device">{`${updatedData?.length ?? 0 } ${updatedData?.length > 1 ? 'devices' : 'device' }`}</p>
         <div className="card-wrapper">
           {updatedData?.length ? updatedData?.map(({id, product, line, icon}:UpdatedType) => (
             <Card key={id}

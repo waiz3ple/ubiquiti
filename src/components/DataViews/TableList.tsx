@@ -1,14 +1,18 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
+import NotFound from '../../pages/NotFound';
 import { useAppDispatch, useAppSelector, useSearch } from '../../redux/Hooks';
 import { UpdatedType } from '../../redux/Types';
-import { includeActiveProp } from '../../redux/Util';
+import { includeActiveProp, processError } from '../../redux/Util';
 import { fetchDevices } from '../../redux/features/data/Devices';
 import { loadData, makeActive } from '../../redux/features/data/UpdatedData';
 import { loadStableData } from '../../redux/features/data/UpdatedStableData';
 import ListLoader from '../loaders/ListLoader';
 import SpecTable from './SpecTable';
-const TableStyle = styled.table`
+
+
+const TableStyle = styled.table<LoadAndErrorType>`
+display: ${({loading, error}) => (!loading && error)? 'none':'block'}
   width: 100%;  
   border-collapse: collapse;
 
@@ -32,9 +36,12 @@ const TableStyle = styled.table`
      }
 
      &  thead {
+         & tr{
+          visibility: ${({loading, error}) => (!loading && error)? 'hidden':'visible'}
+         }
         & th{
           padding-bottom: .5rem;
-
+       
            &:first-child{
            font-size: .9rem;
         }
@@ -69,6 +76,10 @@ const TableStyle = styled.table`
      }
 `;
 
+interface LoadAndErrorType{
+    loading: boolean;
+    error: string|undefined
+}
 
 function TableList(){  // make this reusable
     //---------------------
@@ -95,9 +106,9 @@ function TableList(){  // make this reusable
     return (
       <div>
         {loading && searchValue && <ListLoader/>}
-        {!loading && error &&  (<div>Error: {error}</div>)}
+        {!loading && error && (NotFound(processError(error)))}
         {!loading   && searchValue &&
-         <TableStyle>
+         <TableStyle loading={loading} error={error}>
            <thead>
               <tr>
                 <th>{`${updatedData?.length ?? 0 } ${updatedData?.length > 1 ? 'devices' : 'device' }`}</th>
