@@ -12,7 +12,6 @@ import SpecTable from './SpecTable';
 
 
 const TableStyle = styled.table<LoadAndErrorType>`
-display: ${({loading, error}) => (!loading && error)? 'none':'block'}
   width: 100%;  
   border-collapse: collapse;
 
@@ -69,11 +68,15 @@ display: ${({loading, error}) => (!loading && error)? 'none':'block'}
          grid-column: 2/-1;
          border:none;
          display:none;
+         @media (max-width: 600px){
+           
+         }
          &.active{
-          display:block  /* the active one will only have access */
+          display:block  /* the active one will only have access to this declearation */
          }
        }
      }
+
 `;
 
 interface LoadAndErrorType{
@@ -111,7 +114,7 @@ function TableList(){  // make this reusable
          <TableStyle loading={loading} error={error}>
            <thead>
               <tr>
-                <th>{`${updatedData?.length ?? 0 } ${updatedData?.length > 1 ? 'devices' : 'device' }`}</th>
+                <th>{`${updatedData?.length??0}${updatedData?.length>1?'devices':'device'}`}</th>
                 <th>Productline</th>
                 <th>Name</th>
               </tr>

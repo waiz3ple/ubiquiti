@@ -3,10 +3,11 @@ import styled from "styled-components";
 
 const HeaderStyle = styled.header`
     width: 100%;
-    background-image: linear-gradient(90deg, var(--color-grey-3), 40%, var(--color-grey-1));
-    display: grid;
-    grid-template-columns: min-content repeat( 2, 1fr);
     position: relative;
+    display: grid;
+    margin-right:0;
+    grid-template-columns: min-content repeat(2, 1fr);
+    background-image: linear-gradient(90deg, var(--color-grey-3), 40%, var(--color-grey-1));
    & .user-info{
       display:grid;
       justify-content: end ;

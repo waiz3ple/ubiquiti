@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { iconPropsType } from "../../redux/Types";
 
 const SvgWrapper = styled.div`
- color: #006FFF;
+ color: var(--color-secondary);
   &.part {
 	& .box{
         fill:none;

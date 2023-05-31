@@ -55,12 +55,34 @@ export function SkeletonCard() {
 
 
 const SkeletonGrid = styled.div`
-        & .grid-wrapper{
+      & .grid-wrapper{
             color: var(--color-grey-4);
             padding: 2rem .5rem 1rem;
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 2rem;
+
+          //----------------------
+      @media (max-width: 1110px){
+          grid-template-columns: repeat(4, 1fr);
+      }
+
+      @media (max-width: 900px){
+       grid-template-columns: repeat(3, 1fr);
+     }
+
+     @media (max-width: 660px){
+       grid-template-columns: repeat(2, 1fr);
+     }
+
+     @media (max-width: 400px){
+       grid-template-columns: repeat(1, 100%);
+       gap:  1rem auto;
+       justify-items: center;
+       padding:0;
+      
+     
+          //----------------------
         }
         
     } 

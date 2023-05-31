@@ -15,6 +15,7 @@ import { OpenPanel } from '../redux/features/filterPanel/Panel';
 const ViewStyle = styled.div`
   margin: 2.5rem auto;
   width: 90%;
+  max-width: var(--max-width);
 `;
 
 const ToolbarWrapper = styled.div`
@@ -27,7 +28,9 @@ const ToolbarWrapper = styled.div`
   align-items: center;
   padding: 0 3rem;
   position: relative;
-
+   @media (max-width: 400px){
+      padding: 0 0.5rem;
+    }
 `;
 
 const NavIcons = styled.div`
@@ -37,6 +40,9 @@ const NavIcons = styled.div`
 
   & > *:not(:last-child) {
     margin-right: 1rem;
+    @media (max-width: 400px){
+      margin-right: .5rem;
+    }
   }
 
   & > .filter {
@@ -45,6 +51,7 @@ const NavIcons = styled.div`
     border: none;
     background: none;
     color: inherit;
+    
   }
 
   & a {
@@ -89,7 +96,7 @@ function Home() {
       </ToolbarWrapper>
       <ViewStyle>
         {/* <UbiguitiLoadSpinner/>  */} {/*  <ListLoader/> */}
-        {/*  <GridLoader/>  */} <Outlet />
+        {/*  <GridLoader/>  */}   <Outlet /> 
       </ViewStyle>
     </div>
   );

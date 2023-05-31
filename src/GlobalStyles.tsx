@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-const InterRegular = require('./assets/fonts/inter/Inter-Regular.otf');
+const InterRegular = require('./assets/fonts/inter/Inter-Regular.otf'); //import won't work for font importatatn
 
 const GlobalStyle = createGlobalStyle`
     :root{
@@ -14,10 +14,12 @@ const GlobalStyle = createGlobalStyle`
         --color-grey-5:    #838691;
         --color-grey-6:    #DBDCE1;
         --color-black:     #000000;
+        
         //fonts
         --interRegular: InterRegular, serif;
+        
         //page width
-        --page-width: 160rem;
+        --max-width: 160rem;
     }
 
     html{
@@ -28,8 +30,7 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         font-family: var(--interRegular);
         color: var(--color-grey-5);
-        
-        
+
     }
 
     *, *::before, *::after{

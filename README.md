@@ -17,7 +17,7 @@ To get started with the React Assessment project, follow these steps:
 
 1. Clone this repository to your local machine using the following command:
    ```
-   git clone https://github.com/your-username/react-assessment.git
+   git clone https://github.com/waiz3ple/ubiquiti.git
    ```
 2. Change into the project directory:
    ```

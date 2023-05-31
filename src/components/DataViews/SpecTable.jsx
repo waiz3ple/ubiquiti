@@ -10,11 +10,17 @@ const Spec = styled.div`
             width: 60%;
             display: block;
             margin: auto;
+            @media (max-width: 600px){
+              width: 100%;
+            }
           }
      }
 
      & .spec-table{
         width: 50%;
+        @media (max-width: 800px){
+          width: 100%;
+        }
         border-collapse: collapse;
      
          & > tbody  tr{
@@ -38,10 +44,7 @@ const Spec = styled.div`
         } 
       }
 `;
-/* interface propType{
-    data: object
 
-} */
 
 function SpecTable(props) {
    const {line, product, shortnames, icon } = props.device;

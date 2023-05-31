@@ -33,7 +33,8 @@ const SearchBarWrapper = styled.div`
     }
 
     & #search{
-        width: calc(10vw + 15rem);   // media query on this
+        width: calc(10vw + 18rem);   // media query on this
+        
         height: 100%;
         border: none;
         background: transparent;
@@ -54,6 +55,9 @@ const SearchBarWrapper = styled.div`
           font-family: inherit;
         }
         
+         @media (max-width: 470px){
+            width:100%;
+         }
     }
 
   `;

@@ -26,7 +26,34 @@ const Grid = styled.div<LoadAndErrorType>`
        display: grid;
        grid-template-columns: repeat(5, 1fr);
        gap: 2rem;
-   }   
+   } 
+   
+      @media (max-width: 1110px){
+      & .card-wrapper{
+       grid-template-columns: repeat(4, 1fr);
+      }
+     }
+
+     @media (max-width: 900px){
+      & .card-wrapper{
+       grid-template-columns: repeat(3, 1fr);
+      }
+     }
+
+     @media (max-width: 660px){
+      & .card-wrapper{
+       grid-template-columns: repeat(2, 1fr);
+      }
+     }
+
+     @media (max-width: 400px){
+      & .card-wrapper{
+       grid-template-columns: repeat(1, 100%);
+       gap:  1rem auto;
+       justify-items: center;
+       padding:0;
+      }
+     }
 `;
 
 function GridList(){
@@ -60,7 +87,7 @@ function GridList(){
      {!loading && error &&  (NotFound(processError(error)))}
      {!loading && searchValue  &&
      <Grid loading={loading} error={error}>                                  
-        <p className="total-device">{`${updatedData?.length ?? 0 } ${updatedData?.length > 1 ? 'devices' : 'device' }`}</p>
+        <p className="total-device">{`${updatedData?.length??0}${updatedData?.length>1?'devices':'device'}`}</p>
         <div className="card-wrapper">
           {updatedData?.length ? updatedData?.map(({id, product, line, icon}:UpdatedType) => (
             <Card key={id}
