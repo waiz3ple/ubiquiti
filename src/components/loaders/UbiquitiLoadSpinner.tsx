@@ -7,6 +7,15 @@ import styled from "styled-components";
 import { iconPropsType } from "../../redux/Types";
 
 const SvgWrapper = styled.div`
+width: 100%;
+height: 100vh;
+
+display: flex;   // delete after svg illustrator realignment
+justify-items: center; // delete after svg illustrator realignment
+align-content: center;  // delete after svg illustrator realignment
+
+
+
  color: var(--color-secondary);
   &.part {
 	& .box{
@@ -66,7 +75,7 @@ const UbiguitiLoadSpinner = ({ pretty }: styleType) => {
         .to(".box_4", {y:-20, ...commonMoves},  delay)
         .to(".box_4", {...commonAndForwardRot}, delay)
         .to(".box_4", {rotate: -360, duration:1, ease:'inOut', stagger:0.2}, '0.3');
-        tl2.to(".Uup",   {strokeDashoffset:0,  duration:10, ease:"steps(12)"}, '0.3')
+        tl2.to(".Uup",   {strokeDashoffset:0,  duration:5, ease:"steps(6)"}, '0.3')
       }, rootEl.current);
 
       return () => ctx.revert(); // cleanup function
@@ -75,13 +84,15 @@ const UbiguitiLoadSpinner = ({ pretty }: styleType) => {
 
   return (
     <SvgWrapper className="part" ref={rootEl}>
-      <svg version="1.1" id="Ubiquiti"  x="0px" y="0px" viewBox="0 0 1920 1080" enableBackground="new 0 0 1920 1080" xmlSpace="preserve"  style={pretty}>
+      <svg version="1.1" id="Ubiquiti"  x="0px" y="0px" viewBox="-100 0  1920 1080" enableBackground="new 0 0 1920 1080" xmlSpace="preserve"  style={pretty}>
+        <g>
         <path  className="Udown"   d="M825.6,469.6v7.9c0,18.5-15,33.6-33.3,33.6h0c-18.3,0-33.3-15.1-33.3-33.6V428"/>
         <path  className="Uup" d="M825.7,469.7v7.9c0,18.5-15.1,33.6-33.6,33.6h0c-18.5,0-33.6-15.1-33.6-33.6v-49.4"/>
         <rect x="812.7" y="455.3"  className="box box_1" width="12.9" height="12.3"/>
         <rect x="825.7" y="444.3"  className="box box_2" width="11.5" height="11.3"/>
         <rect x="817"   y="434.8"  className="box box_3" width="8.6"  height="8.9"/>
         <rect x="831.3" y="422.9"  className="box box_4" width="5.6"  height="6.2"/>
+        </g>
       </svg>
     </SvgWrapper>
   );

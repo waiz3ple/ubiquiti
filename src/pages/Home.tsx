@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import TableList from '../components/DataViews/TableList';
@@ -72,10 +72,19 @@ interface ToolbarWrapperType{
    error: string|undefined;
 }
 function Home() {
+//----------------for initial loading---
+      const [isLoading, setIsLoading] = useState(true);
+      useEffect(()=>{
+        window.addEventListener('load', ()=> {
+          setIsLoading(false);
+        })
+      },[])
+//----------------for initial loading---<==\\
   const dispatch = useAppDispatch();
-
-  return (
-    <div>
+  return ( 
+    <main> 
+         {isLoading? <UbiguitiLoadSpinner/>:
+    <div> 
       <Header user="Wasiu Ramoni"/>
       <ToolbarWrapper>
         <SearchBar />
@@ -95,10 +104,10 @@ function Home() {
         <FilterPanel />
       </ToolbarWrapper>
       <ViewStyle>
-        {/* <UbiguitiLoadSpinner/>  */} {/*  <ListLoader/> */}
-        {/*  <GridLoader/>  */}   <Outlet /> 
+        <Outlet/>
       </ViewStyle>
-    </div>
+    </div>}
+    </main>
   );
 }
 

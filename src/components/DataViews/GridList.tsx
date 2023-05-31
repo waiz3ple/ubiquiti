@@ -43,6 +43,7 @@ const Grid = styled.div<LoadAndErrorType>`
      @media (max-width: 660px){
       & .card-wrapper{
        grid-template-columns: repeat(2, 1fr);
+       gap: 1.5rem;
       }
      }
 
@@ -87,7 +88,7 @@ function GridList(){
      {!loading && error &&  (NotFound(processError(error)))}
      {!loading && searchValue  &&
      <Grid loading={loading} error={error}>                                  
-        <p className="total-device">{`${updatedData?.length??0}${updatedData?.length>1?'devices':'device'}`}</p>
+        <p className="total-device">{`${updatedData?.length??0} ${updatedData?.length>1?'devices':'device'}`}</p>
         <div className="card-wrapper">
           {updatedData?.length ? updatedData?.map(({id, product, line, icon}:UpdatedType) => (
             <Card key={id}

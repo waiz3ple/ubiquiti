@@ -114,7 +114,7 @@ function TableList(){  // make this reusable
          <TableStyle loading={loading} error={error}>
            <thead>
               <tr>
-                <th>{`${updatedData?.length??0}${updatedData?.length>1?'devices':'device'}`}</th>
+                <th>{`${updatedData?.length??0} ${updatedData?.length>1?'devices':'device'}`}</th>
                 <th>Productline</th>
                 <th>Name</th>
               </tr>

@@ -47,7 +47,10 @@ const Spec = styled.div`
 
 
 function SpecTable(props) {
-   const {line, product, shortnames, icon } = props.device;
+   const {
+    line, product, shortnames, icon, unifi, fcc, ic, usip
+  
+  } = props.device;
   return (
     <Spec>
       <div className="img-wrapper">
@@ -71,14 +74,43 @@ function SpecTable(props) {
               <td>Short name</td>
               <td>{shortnames[0]}</td>
             </tr>
-            <tr>
-              <td>Max. power</td>
-              <td>25V</td>
+             
+             {unifi && 
+             <><tr>
+              <td>Adoptability</td>
+              <td>{unifi?.adoptability ||'Unknown'}</td>
+            </tr><tr>
+                <td>Protect (FOV)</td>
+                <td>{unifi?.protect?.fov || 'unknown'}</td>
+              </tr>
+              </>}
+
+            {fcc && 
+             <tr>
+              <td>FCC</td>
+              <td>{fcc ||'Unknown'}</td>
+            </tr>}
+
+            {ic && 
+             <tr>
+              <td>IC</td>
+              <td>{ic ||'Unknown'}</td>
+            </tr>}
+            
+            {usip && 
+            <><tr>
+              <td>Name Lagacy</td>
+              <td>{usip?.nameLegacy.join(' ') || 'unknown'}</td>
             </tr>
             <tr>
-              <td>Speed</td>
-              <td>2400Mbs</td>
+              <td>Firmware Platform</td>
+              <td>{usip?.firmware?.platform || 'unknown'}</td>
             </tr>
+            <tr>
+              <td>Firmware Board</td>
+              <td>{usip?.firmware?.board || 'unknown'}</td>
+            </tr>
+            </>}
           </tbody>
         </table>
     </Spec>
