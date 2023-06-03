@@ -49,6 +49,8 @@ const SearchBarWrapper = styled.div`
 
         &:focus{
             outline: none;
+             background: transparent;
+            color: var(--color-grey-5);
         }
         
         &::-webkit-search-cancel-button{

@@ -26,6 +26,7 @@ const Spec = styled.div`
          & > tbody  tr{
             display: grid;
             grid-template-columns: repeat(2,  1fr);
+            cursor: default;
             
             & td{
               display: grid;
@@ -42,6 +43,13 @@ const Spec = styled.div`
         & tbody > tr:not(:last-child){
           border-bottom: 1px solid var(--color-grey-3);
         } 
+
+        @media(max-width:1000px){
+          & tbody > tr:last-child{
+          border-bottom: none;
+        } 
+        
+        }
       }
 `;
 

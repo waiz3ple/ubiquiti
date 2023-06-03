@@ -20,8 +20,13 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
     position: absolute;
     right: 1%;
     top: 30%;
-     pointer-events: auto;
+    pointer-events: auto;
     visibility: ${ ({showPanel}) => showPanel ? 'visible' : 'hidden'};
+    
+    @media (max-width: 680px){
+       top: 75%;
+       right: 6% 
+    }
 
     & .panelHeading{
         height: 3.7rem;

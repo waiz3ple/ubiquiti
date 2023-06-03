@@ -32,11 +32,16 @@ const ToolbarWrapper = styled.div`
   align-items: center;
   padding: 0 3rem;
   position: relative;
-   @media (max-width: 400px){
-      padding: 0 0.5rem;
-    }
-  & .mobile-menu{
-    display: none;
+
+  @media (min-width:681px){ // show menu before collapse
+    & .mobile-menu{
+      display: none;
+     } 
+     & .nav-icons{
+       display: block;
+       opacity: 1  !important;  // it can only be !important because I need 
+       visibility:visible !important;  // to change  inline set by GSAP 
+      }
   }
 //------------------- mobile menu slider
    @media (max-width: 680px){
@@ -60,11 +65,10 @@ const ToolbarWrapper = styled.div`
       grid-gap: 2rem;
       margin-top: 3rem;
       opacity:0;
-      background: var(--color-grey-2);
-      /*  */
+      visibility:hidden ;   /* XXXXXXXXXXXXXX */
       padding: .8rem;
       background-color: var( --color-white );
-      box-shadow: -1px 1.5px 3.3px 1.5px rgba(0,0,0,0.46);
+      box-shadow: -1px 1.5px 3px 1.5px rgba(0,0,0,0.46);
       border-radius: 6px;
 
        & a{
@@ -91,6 +95,7 @@ const ToolbarWrapper = styled.div`
     display: flex;
     align-items: center;
     color: var(--color-grey-5);
+    opacity:1;
 
   & > *:not(:last-child) {
     margin-right: 1rem;
@@ -109,7 +114,7 @@ const ToolbarWrapper = styled.div`
       display:none;
     }
     
-    @media (max-width: 750px){
+    @media (max-width: 850px){
       height: 3rem;
       min-width: 2.8rem;
       & span {

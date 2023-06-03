@@ -60,9 +60,19 @@ const TableStyle = styled.table<LoadAndErrorType>`
 
      & tbody{
        font-size: 1.1rem;
-       & tr:not(td:last-child){  
+       & tr{
+         cursor: pointer; 
+         position: relative; 
        }
-       
+       //---------- let try line
+        & tr::after{
+          content:'';
+          position:abslute;
+          background:red;
+          z-index: 9;
+          display:block;
+        }
+       //----------
        & img{
          width: 2rem;
        } 

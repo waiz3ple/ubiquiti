@@ -30,7 +30,7 @@ export const timeoutPromise = (duration: number = 4000) => new Promise<AxiosResp
   if (target) {
     const tl = gsap.timeline();
     tl.to(target, {
-      autoAlpha: target.style?.opacity === '0' ? 1 : 0,
+      autoAlpha: target.style?.opacity === '1' ? 0 : 1,
       duration: 0.5,
       ease: 'power1.easeInOut',
     })
@@ -50,7 +50,7 @@ export const timeoutPromise = (duration: number = 4000) => new Promise<AxiosResp
   }
 }
 
-  //------------------#### ERROR MESSAGES  ###-------------  // Manage all sort of errors 
+  //------------------#### ERROR MESSAGES  ###-------------  // Manage all sort of
   export function processError(error:string){
       switch(true){
         case error.includes('Network'): 
