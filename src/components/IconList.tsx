@@ -28,7 +28,7 @@ export function ThreeBarsIcon({size = 15, fill ='none', strokeWidth = 1.5}: icon
     )
 }
 
-// grid icon
+// grid icon for grid items 
 export function GridIcon({size = 15, fill ='none', strokeWidth = 1.5}: iconPropsType){
    return(
       <svg  fill={fill} viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className="icon grid-list-icon" style={{width:size, cursor:"pointer"}}>
@@ -38,8 +38,8 @@ export function GridIcon({size = 15, fill ='none', strokeWidth = 1.5}: iconProps
    )
 }
 
-//bullet list
-export function BulletList({size = 15, fill ='none', strokeWidth = 1.5}: iconPropsType){
+//bullet list  for list items
+export function BulletList({size = 15, fill='none', strokeWidth = 1.5}: iconPropsType){
     return(
         <svg  fill={fill} viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className="icon bullet-list-icon" style={{width:size, cursor:"pointer"}}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
@@ -47,11 +47,20 @@ export function BulletList({size = 15, fill ='none', strokeWidth = 1.5}: iconPro
     )
 }
 
-//stop-button  icon ◻️
-export function StopButton({size = 15, fill ='none', strokeWidth = 1.5, isActive = false}:iconPropsType){
+//stop-button  icon  for filter options 
+export function StopButton({size = 15, strokeWidth = 1.5, isActive = false}:iconPropsType){
     return(
         <svg  fill={isActive? 'currentColor':'none'} viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className="stop-button" style={{width:size, cursor:"pointer"}}>
            <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 7.5A2.25 2.25 0 017.5 5.25h9a2.25 2.25 0 012.25 2.25v9a2.25 2.25 0 01-2.25 2.25h-9a2.25 2.25 0 01-2.25-2.25v-9z" />
         </svg>
+    )
+}
+
+//Filter Icon 
+export function FilterIcon({size = 15, fill='none', strokeWidth = 1.5 }:iconPropsType){
+    return (
+      <svg fill={fill} viewBox="0 0 24 24" strokeWidth={strokeWidth} stroke="currentColor" className="filter-icon">
+         <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+     </svg>
     )
 }

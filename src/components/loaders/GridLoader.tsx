@@ -80,20 +80,17 @@ const SkeletonGrid = styled.div`
        gap:  1rem auto;
        justify-items: center;
        padding:0;
-      
-     
-          //----------------------
         }
         
     } 
 `;
 
 
-function GridLoader() {
+function GridLoader(props: {size:number}) {
   return (
  <SkeletonGrid>
      <div className="grid-wrapper">
-      { Array.from({length:15}, (_,i)=> {
+      {Array.from({length:props.size}, (_,i)=> {
          return <SkeletonCard key={i}/>
       })}
     </div>

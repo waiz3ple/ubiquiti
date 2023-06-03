@@ -14,6 +14,12 @@ const SearchBarWrapper = styled.div`
     color: var(--color-grey-4);
     background: var(--color-grey-2);
     box-shadow: .3rem .5rem .7rem 0rem currentColor;
+     pointer-events: auto;
+    @media (max-width: 680px){
+      width: 100%;
+      margin:0;
+      padding:0;
+    }
     
    
     & .search-icon, & .close-icon {
@@ -33,8 +39,7 @@ const SearchBarWrapper = styled.div`
     }
 
     & #search{
-        width: calc(10vw + 18rem);   // media query on this
-        
+        width: calc(10vw + 18rem); 
         height: 100%;
         border: none;
         background: transparent;
@@ -55,9 +60,11 @@ const SearchBarWrapper = styled.div`
           font-family: inherit;
         }
         
-         @media (max-width: 470px){
-            width:100%;
-         }
+        @media (max-width: 680px){
+          width: 100%;
+          margin: 0;
+          padding:0;
+      }
     }
 
   `;
@@ -77,21 +84,25 @@ const handleClearSearch = ()=> {
 }
   return (
     <SearchBarWrapper>
-        <label htmlFor='search'>
-           <SearchIcon />
-        </label>
-       <input 
-          type="search" 
-          name="search" 
-          id="search" 
-          placeholder='Search' 
-          value={searchValue}
-          onChange={handleChange}
-       />
-       <div onClick={ handleClearSearch }>
-          <CloseIcon/>
-       </div>
+      {/* Search icon label */}
+      <label htmlFor="search">
+        <SearchIcon />
+      </label>
+      {/* Search input */}
+      <input
+        type="search"
+        name="search"
+        id="search"
+        placeholder="Search"
+        value={searchValue}
+        onChange={handleChange}
+      />
+      {/* Clear search button */}
+      <div onClick={handleClearSearch}>
+        <CloseIcon />
+      </div>
     </SearchBarWrapper>
+
   )
 }
 

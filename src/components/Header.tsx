@@ -42,16 +42,20 @@ interface propsType{
 
 function Header(props: propsType){
    return(
-    <HeaderStyle>
-           <Link to="/">
-             <img className="brand-logo" alt="Brand Logo" src="https://cdn.shopify.com/s/files/1/1439/1668/t/28/assets/logo.svg?v=136823354682183510631672761392"/>
-           </Link>
-          <h4 className="devices">Devices</h4>
-       
+      <HeaderStyle>
+        {/* Brand logo */}
+        <Link to="/">
+          <img className="brand-logo" alt="Brand Logo" src="https://cdn.shopify.com/s/files/1/1439/1668/t/28/assets/logo.svg?v=136823354682183510631672761392" />
+        </Link>
+        {/* Page title */}
+        <h4 className="devices">Devices</h4>
+        {/* User info */}
         <div className="user-info">
-           <p>Author/{props.user ||'Developer Name'}</p>
+          {/* User name */}
+          <p>Author/{props.user || 'Developer Name'}</p>
         </div>
-    </HeaderStyle>
+      </HeaderStyle>
+
    )
 }
 

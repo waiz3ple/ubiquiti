@@ -1,19 +1,20 @@
 # React Assessment
 
-Welcome to Ubiquiti device search page for developers React. We have provided you with a starter template that includes some basic components and functionality.
+Welcome to the Ubiquiti device search page for in-house staff and developers. We provide this interface for easy access to numerous products we have in stock, including product names, lines, and specifications. The interface is designed to be accessible to all staff members on various devices, ranging from wide-screen monitors and laptops to tablets and small-screen phones.
 
 ## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
+- [Strong Areas](#strong-areas)
 - [Areas to Improve](#areas-to-improve)
 - [Contributing](#contributing)
-- [License](#license)
+- [Appreciation](#appreciation)
 
 ## Installation
 
-To get started with the React Assessment project, follow these steps:
+To get started with this Assessment project, follow these steps:
 
 1. Clone this repository to your local machine using the following command:
    ```
@@ -21,7 +22,7 @@ To get started with the React Assessment project, follow these steps:
    ```
 2. Change into the project directory:
    ```
-   cd react-assessment
+   cd ubiquiti
    ```
 3. Install the dependencies:
    ```
@@ -37,71 +38,84 @@ To get started with the React Assessment project, follow these steps:
 
 Once the development server is running, you can begin exploring and interacting with the React Assessment project. The project includes the following features:
 
-- A home page with some dummy content.
-- Navigation bar with links to different sections.
-- Placeholder components that can be extended and customized.
+- A home page with a search bar and navbar to search and filter products.
+- The navigation includes list view, grid view, and filter options.
+- The color tone of the page is maintained as grayscale.
 - Basic routing setup using React Router.
 
-Feel free to modify and enhance the project to demonstrate your skills and understanding of React.
+Feel free to modify and enhance the project.
 
 ## Project Structure
 
 The structure of the project is as follows:
 
 ```
-Ubiquiti-Proj/
+Ubiquiti/
   |- public/
   |- src/
     |- assets/
        |- fonts/
        |- images/
     |- components/
-       |- DataVies/
-       |- FilerPanel.jtsx
-       |- Header.jtsx
-       |- IconList.jtsx
-       |- SearchBar.jtsx
+       |- DataView/
+       |- FilterPanel.jsx
+       |- Header.jsx
+       |- IconList.jsx
+       |- SearchBar.jsx
     |- pages/
-       |- Home.tsx
-       |- NotFound.tsx
+       |- Home.jsx
+       |- NotFound.jsx
     |- Redux/
-        |- features/
-            |- data/
-               |- Devices.ts
-               |- UpdatedData.ts
-            |- filterPanel/
-               |- Panel.ts
-            |- filters/
-               |- Filter.ts
-            |- search/
-               |- Search/
-            |-Store.ts
-
+      |- features/
+       |- data/
+          |- Devices.js
+          |- UpdatedData.js
+          |- UpdatedStableData.js
+       |- filterPanel/
+          |- Panel.js
+       |- filters/
+          |- Filter.js
+       |- search/
+          |- Search/
+       |- Store.js
+    |- Hooks.js
+    |- Util.js
+    |- GlobalStyle.js
     |- App.js
     |- index.js
     |- ...
   |- ...
+  |- README.md
+  |- ...
 ```
 
-The `public` directory contains the index HTML file and any other static assets. The `src` directory contains the main application code, including components and the root `App.js` file.
+The `public` directory contains the index HTML file and any other static assets. The `src` directory contains the main application code, including components and the root `App.jsx` file.
+
+## Strong Areas
+
+The following are the areas that are well-handled in this project:
+
+- **Performance**: Since the data is relatively stable, the necessary data for the page is loaded alongside the initial page load and stored. Subsequent activities such as data querying (searching) and filtering are done using the stored data. By default, images load asynchronously, making this approach most suitable. API calls have been reduced to one, and user experience is improved. Memoization could be considered in one or two places.
+- **Accessibility**: The application is accessible to users with disabilities. I followed accessibility guidelines and best practices. The application is also responsive and adaptive for all screen sizes.
+- **Code Organization**: The code is well-structured, Codes are broken down into components and grouped based on concerns. Functions are grouped into hooks and utilities for better reusability. Styled-components were chosen for code organization considerations.
+- **UserEngagement**: The application has an appealing user interface with skeletal loaders that give users an idea of what is coming. A unique spinner derived from the company's logo is used for initial loading. The application is easy to navigate, and overall loading speed is extremely fast, even on low 3G connections.
+- **Styling and Animation**: styled-components was used in this project due to its nesting feature (similar to SASS), ease of passing props, ability to coexist in the same file with JavaScript and HTML. GSAP was used for animations, making complex animations easier to understand.
+- **Assets and Graphics**: All images used are SVG and have been made into reusable components. Unique images were drawn using Adobe Illustrator.
+- **Error Handling**: All error messages have been improved and are presented in a user-friendly and helpful way.
+- **Documentation**: Comments have been added to explain the purpose of each function and complex blocks of code.
 
 ## Areas to Improve
 
-While assessing your skills, we will be looking for the following areas of improvement in the project:
+The following areas need improvement in this project:
 
-- **Code Organization**: Ensure the code is well-structured and follows best practices for component organization, separation of concerns, and module imports.
-- **Styling**: Enhance the visual appeal of the application by improving the styling, using CSS frameworks, or implementing custom styles.
-- **Error Handling**: Implement proper error handling and validation where applicable, providing clear and user-friendly error messages.
-- **Testing**: Add unit tests or integration tests to verify the functionality of the components and features.
-- **Performance**: Optimize the performance of the application by identifying any bottlenecks or inefficiencies and implementing improvements.
-- **Accessibility**: Ensure the application is accessible to users with disabilities by following accessibility guidelines and best practices.
-- **Documentation**: Add relevant comments, inline documentation, or JSDoc annotations to explain complex code blocks or functions.
-
-These are just a few suggestions, and you are encouraged to go beyond these areas and impress us with your skills and creativity!
+- **Font Import**: Unfortunately, I couldn't import font using ES6 import here I have to settle with commonJS require method.
+- **Design**: The navigation while on the mobile phase needs a general redesign. I plan to make it collapsible with the name of each nav icon shows up on full expansion and icon on semi expansion.
+- **Testing**: Manual testing and TypeScript were used in this project, but it awaits unit and end-to-end testing.
+- **Bug**: The menu button on the mobile view requires being clicked twice for the first time. This error is due to GSAP trying to initialize inline properties to the DOM before manipulation. I marked this error as high priority, and it will be fixed in the next update.
 
 ## Contributing
 
-We appreciate your interest in contributing to this project. If you have any suggestions, bug reports, or feature requests, please open an issue in this repository.
+Your suggestions are welcome, I will like to learn more.
 
 ## License
 
@@ -109,4 +123,16 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-Thank you for participating in the React Assessment! We look forward to seeing your work and wish you the best of luck. If you have any questions or need any assistance, feel free to reach out to us.
+## Appreciation
+
+I wanted to express my sincere appreciation for the opportunity given to me to work on this project assessment. It was an enriching experience, and I wanted to take a moment to thank you for considering me as a candidate for the position.
+
+Throughout the assessment process, I had the chance to showcase my skills and demonstrate my capabilities. The project challenged me to think critically, apply my knowledge, and conduct effective research. One of the most challenging aspects for me was nesting the table, as I had never had the chance to do that before. I truly enjoyed working on the entire project, and it was a great opportunity for personal and professional growth.
+
+I want to assure you that I approached this project assessment with utmost dedication, and I am confident that the work I submitted accurately reflects my abilities and commitment to delivering high-quality results. I am genuinely excited about the possibility of joining your team and contributing to Ubiquiti's success.
+
+Once again, I want to thank you for considering me for this opportunity. I truly appreciate the chance to showcase my skills and be part of the assessment process. I look forward to hearing from you regarding the next steps in the hiring process.
+
+If there are any additional details or information you require, please do not hesitate to reach out to me. Thank you once again for your time and consideration.
+
+Thanks!

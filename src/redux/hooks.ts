@@ -8,7 +8,7 @@ export const useAppDispatch = () => useDispatch<AppDispatch>()
 
 
  //other custome hooks
-
+//comparing search data and data from API
 export function useSearch(dataOri: OriginalType, searchTerm: string, category:string='product') {
   const searchTermClean = searchTerm.replaceAll(/[\\\|\{\}\(\)\[\]\?\/\:\+\=\^\*]+/gm, ''); // Cleaned from Regex Reserved Chars   
     return dataOri.devices?.filter((item: OriginalType) =>
@@ -17,7 +17,7 @@ export function useSearch(dataOri: OriginalType, searchTerm: string, category:st
 
 }
 
-
+// same as above but fetching from extrated data
 export function filterOut(data: UpdatedType, searchTerm:string, category:string ='line'){
     return data?.filter( (item: UpdatedType) => item[category].name.toLowerCase().includes( searchTerm.toLowerCase() ))
 } 

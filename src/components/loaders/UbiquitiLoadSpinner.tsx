@@ -60,7 +60,7 @@ const commonAndForwardRot = {
 }
 
 
-const UbiguitiLoadSpinner = ({ pretty }: styleType) => {
+const UbiquitiLoadSpinner = ({ pretty }: styleType) => {
   const rootEl = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -98,5 +98,5 @@ const UbiguitiLoadSpinner = ({ pretty }: styleType) => {
   );
 };
 
-export default UbiguitiLoadSpinner; // Ubiquiti Custome Load Spinner
+export default UbiquitiLoadSpinner; // Ubiquiti Custome Load Spinner
 

@@ -12,7 +12,7 @@ import GridLoader from "../loaders/GridLoader";
 import Card from "./Card";
 
 interface LoadAndErrorType{
-    loading: boolean;
+    loading: number;
     error: string|undefined
 }
 
@@ -84,18 +84,18 @@ function GridList(){
    
     return (
    <div>
-     {loading && searchValue && <GridLoader/>} {/*show load only when swaping layout*/}
+     {loading && searchValue && <GridLoader size={25} aria-busy={true}/>} {/*show load only when swaping layout*/}
      {!loading && error &&  (NotFound(processError(error)))}
      {!loading && searchValue  &&
-     <Grid loading={loading} error={error}>                                  
-        <p className="total-device">{`${updatedData?.length??0} ${updatedData?.length>1?'devices':'device'}`}</p>
+     <Grid loading={+loading} error={error}>                                  
+        <p className="total-device">{`${updatedData?.length??0}${updatedData?.length>1?' devices':' device'}`}</p>
         <div className="card-wrapper">
           {updatedData?.length ? updatedData?.map(({id, product, line, icon}:UpdatedType) => (
             <Card key={id}
             imgUrl={`https://static.ui.com/fingerprint/ui/icons/${icon.id}_257x257.png`}
             productName={product.name} 
             productLine={line.name} />
-          )):''}
+          )):null}
         </div>
     </Grid>}
 </div>

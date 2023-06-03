@@ -41,12 +41,15 @@ interface propsType {
 function Card({imgUrl, productName, productLine}: propsType) {
   return (
     <CardStyled>
-       <div className="img-wrapper">
-          <img src={imgUrl} alt={productName} />
-       </div>
-       <h4 className="product-name">{productName}</h4>
-       <p className="product-line">{productLine}</p>
-    </CardStyled>
+  <div className="img-wrapper">
+    <img src={imgUrl} alt={productName} />
+  </div>
+  <h4 className="product-name" role="heading" aria-level={2}>
+    {productName}
+  </h4>
+  <p className="product-line">{productLine}</p>
+</CardStyled>
+
   )
 }
 

@@ -1,12 +1,11 @@
 import { AxiosResponse } from 'axios';
+import { gsap } from 'gsap';
+import { RefObject } from 'react';
 import { v4 as uuid } from 'uuid';
 import { OriginalType, UpdatedType } from './Types';
 
-
 // add id and isActive property to our searched result 
 // [{x:'x'}, {y:'y'}]  => [{x:'x', id:123, isActtive: false}, {y:'y', id: 283, isActtive: false}]
-
-
 export function includeActiveProp(originalData: OriginalType): UpdatedType {
    return originalData?.map((item: OriginalType) => ({
     ...item,
@@ -15,7 +14,7 @@ export function includeActiveProp(originalData: OriginalType): UpdatedType {
   }));
 }
 
-
+// in other to not peace off users, this function will return reject promise after exhusting the given duration
 export const timeoutPromise = (duration: number = 4000) => new Promise<AxiosResponse>(( _, reject) =>{
     setTimeout(() => {
       return reject( new Error('Request Timed Out!'))
@@ -23,6 +22,35 @@ export const timeoutPromise = (duration: number = 4000) => new Promise<AxiosResp
   }) 
 
 
+
+//----------------------TOGGLE VISIBILITY-------------
+  export function toggleVisibility(targetRef: React.RefObject<HTMLElement>) {
+  const target = targetRef.current!;
+
+  if (target) {
+    const tl = gsap.timeline();
+    tl.to(target, {
+      autoAlpha: target.style?.opacity === '0' ? 1 : 0,
+      duration: 0.5,
+      ease: 'power1.easeInOut',
+    })
+    .fromTo(
+      target,
+      {
+        y: 20,
+        scale: 1.2,
+      },
+      {
+        y: 0,
+        scale: 1,
+        duration: 0.5,
+        ease: 'elastic.out(2, 0.3)',
+      }
+    );
+  }
+}
+
+  //------------------#### ERROR MESSAGES  ###-------------  // Manage all sort of errors 
   export function processError(error:string){
       switch(true){
         case error.includes('Network'): 

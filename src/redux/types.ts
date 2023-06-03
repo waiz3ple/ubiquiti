@@ -17,7 +17,7 @@ export interface OriginalType {
         id: string;
     };
 
-   [others : string]: any; // extra properties
+   [others : string]: any; // extra properties that might break the code
 }
 
 export interface UpdatedType extends OriginalType {

@@ -20,6 +20,7 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
     position: absolute;
     right: 1%;
     top: 30%;
+     pointer-events: auto;
     visibility: ${ ({showPanel}) => showPanel ? 'visible' : 'hidden'};
 
     & .panelHeading{
@@ -32,6 +33,11 @@ const FilterWrapper = styled.div<FilterWrapperProps>`
         
         & > p {
             font-family: inherit;
+        }
+
+        & > button {
+            background:none;
+            border: none;
         }
     }
     
@@ -79,23 +85,34 @@ function FilterPanel() {
     }
     
   return (
-    <FilterWrapper  showPanel={showPanel}>
-    
-       <div className="panelHeading">
-         <p>Filter</p>
-         <div  onClick={handleCloseButton}> 
-            <CloseIcon/>
-        </div>
-       </div>
-       <div className="panelBody">
-           <h3>Product line</h3>
-           <ul>
-             {filter?.map(({option, id, isActive}) =>(
-             <li key={id} id={id} onClick={(event)=> handleClick(event, option)}><StopButton isActive={isActive} size={20}/> {option}</li>
-              ))}
-           </ul>
-       </div>
-    </FilterWrapper>
+   <FilterWrapper showPanel={showPanel}>
+  {/* Panel heading */}
+  <div className="panelHeading">
+    {/* Filter label */}
+    <p>Filter</p>
+    {/* Close button */}
+    <button onClick={handleCloseButton}>
+      <CloseIcon />
+    </button>
+  </div>
+  {/* Panel body */}
+  <div className="panelBody">
+    {/* Section heading */}
+    <h3>Product line</h3>
+    {/* Filter options */}
+    <ul>
+      {filter?.map(({ option, id, isActive }) => (
+        <li key={id} id={id} onClick={(event) => handleClick(event, option)}>
+          {/* Indicator for active option what make fill move to the active element*/}
+          <StopButton isActive={isActive} size={20} />
+          {/* Option text */}
+          {option}
+        </li>
+      ))}
+    </ul>
+  </div>
+</FilterWrapper>
+
   )
 }
 

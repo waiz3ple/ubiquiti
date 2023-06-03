@@ -78,7 +78,7 @@ const ListSkeletonStyle = styled.table`
 `;
 
 
-function ListLoader(){  // make this reusable
+function ListLoader(props: { size: number }){  // make this reusable
    
     return (
       <div>
@@ -91,12 +91,12 @@ function ListLoader(){  // make this reusable
               </tr>
            </thead>
            <tbody>
-            {Array.from({length:20}, (_, i)=> (
+            {Array.from({length:props.size}, (_, i)=> (
               <tr key={i}>
                 <td><div></div></td>
                 <td><div></div></td>
                 <td><div></div></td>
-                <Shimmer/>
+                <td><Shimmer/></td>
               </tr>
               ))}
            </tbody>

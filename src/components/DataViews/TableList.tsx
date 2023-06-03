@@ -11,6 +11,12 @@ import ListLoader from '../loaders/ListLoader';
 import SpecTable from './SpecTable';
 
 
+
+interface LoadAndErrorType{
+    loading: number; // becasue I cant render boolean to the DOM  note it was converted with +
+    error: string|undefined;
+}
+
 const TableStyle = styled.table<LoadAndErrorType>`
   width: 100%;  
   border-collapse: collapse;
@@ -36,7 +42,7 @@ const TableStyle = styled.table<LoadAndErrorType>`
 
      &  thead {
          & tr{
-          visibility: ${({loading, error}) => (!loading && error)? 'hidden':'visible'}
+          visibility: ${({ loading, error }) => (!loading && !!error ) ? 'hidden' : 'visible'}
          }
         & th{
           padding-bottom: .5rem;
@@ -79,24 +85,21 @@ const TableStyle = styled.table<LoadAndErrorType>`
 
 `;
 
-interface LoadAndErrorType{
-    loading: boolean;
-    error: string|undefined
-}
 
 function TableList(){  // make this reusable
     //---------------------
    const { loading, data, error } = useAppSelector(state => state.devices);
     const searchValue = useAppSelector((state)=> state.search.value);
     // decison: since it a static data, I will reduce the number of API request to one by creating seprate reducer for updated data
+    const dispatch = useAppDispatch();
+    
     useEffect(()=>{ 
-        dispatch(fetchDevices())   
+      dispatch(fetchDevices())   
     },[])
     
     
     const searchedResult = useSearch(data, searchValue)  // searched result
     const searchedResultActive = includeActiveProp( searchedResult ) // adding isActive properties to search result
-    const dispatch = useAppDispatch()
     
     useEffect(()=>{  // 1. sending this updated result up to the updatedData state.
       dispatch(loadData(searchedResultActive))   
@@ -108,35 +111,52 @@ function TableList(){  // make this reusable
     //---------------------
     return (
       <div>
-        {loading && searchValue && <ListLoader/>}
-        {!loading && error && (NotFound(processError(error)))}
-        {!loading   && searchValue &&
-         <TableStyle loading={loading} error={error}>
-           <thead>
-              <tr>
-                <th>{`${updatedData?.length??0} ${updatedData?.length>1?'devices':'device'}`}</th>
-                <th>Productline</th>
-                <th>Name</th>
-              </tr>
-           </thead>
-           <tbody>
-              {updatedData?.length ? updatedData?.map((device: UpdatedType) => (
-              <tr key={device.id}  onClick={()=> dispatch(makeActive(device.id))}>
-                <td><img 
-                    src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_257x257.png`} 
-                    alt={device.product.name}/>
-                </td>
-                <td>{device.line.name}</td>
-                <td>{device.product.name}</td>
-                <td className={`${device.isActive?'last-td active':'last-td'}`}>
-                   <SpecTable  device={device}/>
-                </td>
-              </tr>
-          )):''}
-           </tbody>
-         </TableStyle>
-        }
-        </div>
+  {/* Loading indicator */}
+  {loading && searchValue && <ListLoader size={20} />}
+  {/* Error message */}
+  {!loading && error && NotFound(processError(error))}
+  {/* Data table */}
+  {!loading && searchValue && (
+    <TableStyle loading={+loading} error={error}>
+      <thead>
+        {/* Table header */}
+        <tr>
+          <th>{`${updatedData?.length ?? 0} ${updatedData?.length > 1 ? 'devices' : 'device'}`}</th>
+          <th>Productline</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        {/* Table rows */}
+        {updatedData?.length ? (
+          updatedData.map((device: UpdatedType) => (
+            <tr key={device.id} onClick={() => dispatch(makeActive(device.id))}>
+              {/* Device image */}
+              <td>
+                <img
+                  src={`https://static.ui.com/fingerprint/ui/icons/${device.icon.id}_257x257.png`}
+                  alt={device.product.name}
+                />
+              </td>
+              {/* Product line */}
+              <td>{device.line.name}</td>
+              {/* Product name */}
+              <td>{device.product.name}</td>
+              {/* Last column */}
+              <td className={`${device.isActive ? 'last-td active' : 'last-td'}`}>
+                {/* Additional specifications */}
+                <SpecTable device={device} />
+              </td>
+            </tr>
+          ))
+        ) : (
+          // No data available
+          null
+        )}
+      </tbody>
+    </TableStyle>
+  )}
+</div>
     ) 
 }
 

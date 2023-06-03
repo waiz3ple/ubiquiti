@@ -21,49 +21,35 @@ const NotFoundWrapper = styled.div`
     }
 `;
 
-function NotFound({errorMessage, errorDetail, linkTitle }:NotFoundType) {
+interface NotFoundProps {
+  errorMessage?: string;
+  errorDetail?: string;
+  linkTitle?: string;
+}
+
+const NotFound: React.FC<NotFoundProps> = ({
+  errorMessage = 'It seems you hit a snag!',
+  errorDetail = 'Sorry, the page you are requesting is not available',
+  linkTitle = 'Go back home',
+}) => {
   return (
     <NotFoundWrapper>
-       <img src={image404} alt="404 Image" />
-       <h1 className="title">{errorMessage}</h1>
-       <p>{errorDetail}</p>
-       <Button>
-          <Link to={'/ubiquiti'}>{linkTitle}</Link>  {/* remove! only for github */}
-          {/* <Link to={'/'}>Go back Home</Link> */}  
-       </Button>
+      <img src={image404} alt="404 Image" />
+      <h1 className="title">{errorMessage}</h1>
+      <p>{errorDetail}</p>
+      <Button>
+        <Link to="/ubiquiti">{linkTitle}</Link>
+        {/* Uncomment the line below to go back to the home page */}
+        {/* <Link to="/">Go back Home</Link> */}
+      </Button>
     </NotFoundWrapper>
-  )
-}
-
-interface NotFoundType{
-   errorMessage: string,
-   errorDetail: string,
-   linkTitle: string,
-}
-
-NotFound.defaultProps = {
-   errorMessage: 'It seems you hit a snag!',
-   errorDetail: 'Sorry, the page you are requesting is not avaliable',
-   linkTitle: 'Go back home'
-}
-
-export default NotFound
-
-
-
-/* function NotFound() {
-  return (
-    <NotFoundWrapper>
-       <img src={image404} alt="404 Image" />
-       <h1 className="title">It seems you hit a snag!</h1>
-       <p>Sorry, the page you are requesting is not avaliable</p>
-       <Button>
-          <Link to={'/ubiquiti'}>Go back Home</Link>  {/* remove! only for github */
-          /* <Link to={'/'}>Go back Home</Link>   
-       </Button>
-    </NotFoundWrapper>
-  )
-}
+  );
+};
 
 export default NotFound;
- */
+
+
+
+
+
+
