@@ -156,7 +156,7 @@ function Home() {
 //----------------for initial loading--- ==>
       const [isLoading, setIsLoading] = useState(true);
       useEffect(()=>{
-        window.addEventListener('load', ()=> {
+        window.addEventListener('DOMContentLoaded', ()=> {
           setIsLoading(false);
          })
       },[])
