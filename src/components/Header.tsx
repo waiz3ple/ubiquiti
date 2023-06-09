@@ -35,7 +35,7 @@ const HeaderStyle = styled.header`
 `;
 
 interface propsType{
-   user: string,
+   user?: string,
    error?:string,
    loading?: boolean
 }

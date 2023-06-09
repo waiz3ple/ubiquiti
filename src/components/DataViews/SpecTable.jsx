@@ -6,6 +6,7 @@ const Spec = styled.div`
      grid-template-columns: 2fr 5fr;
     
      & .img-wrapper {
+          cursor: default;
           & img {
             width: 60%;
             display: block;

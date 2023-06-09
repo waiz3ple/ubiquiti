@@ -1,7 +1,7 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios, { AxiosResponse } from 'axios';
 import { ReactNode } from 'react';
-import { timeoutPromise } from '../../Util';
+import { timeoutPromise } from '../../../components/Util';
 
 interface stateType {
     loading: boolean;

@@ -1,24 +1,25 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import TableList from '../components/DataViews/TableList';
-import FilterPanel from '../components/FilterPanel';
-import Header from '../components/Header';
-import { BulletList, FilterIcon, GridIcon, ThreeBarsIcon } from '../components/IconList';
-import SearchBar from '../components/SearchBar';
-import GridLoader, { SkeletonCard } from '../components/loaders/GridLoader';
-import ListLoader from '../components/loaders/ListLoader';
-import UbiquitiLoadSpinner from '../components/loaders/UbiquitiLoadSpinner';
-import { useAppDispatch, useAppSelector } from '../redux/Hooks';
-import { toggleVisibility } from '../redux/Util';
-import { OpenPanel } from '../redux/features/filterPanel/Panel';
+import { useAppDispatch, useAppSelector } from '../../redux/Hooks';
+import { OpenPanel } from '../../redux/features/filterPanel/Panel';
+import TableList from '../DataViews/TableList';
+import FilterPanel from '../FilterPanel';
+import Header from '../Header';
+import { BulletList, FilterIcon, GridIcon, ThreeBarsIcon } from '../IconList';
+import SearchBar from '../SearchBar';
+import { toggleVisibility } from '../Util';
+import GridLoader, { SkeletonCard } from '../loaders/GridLoader';
+import ListLoader from '../loaders/ListLoader';
+import UbiquitiLoadSpinner from '../loaders/UbiquitiLoadSpinner';
 
 const ViewStyle = styled.div`
   margin: 2.5rem auto;
   width: 90%;
   max-width: var(--max-width);
   @media (max-width: 680px){
-    width:98%
+    width: 98%;
+    margin: auto;
   }
 `;
 
@@ -33,25 +34,26 @@ const ToolbarWrapper = styled.div`
   padding: 0 3rem;
   position: relative;
 
-  @media (min-width:681px){ // show menu before collapse
+  @media (min-width:681px){ // keep showing menu before collapse
     & .mobile-menu{
       display: none;
      } 
      & .nav-icons{
        display: block;
        opacity: 1  !important;  // it can only be !important because I need 
-       visibility:visible !important;  // to change  inline set by GSAP 
+       visibility:visible !important;  // to update  inline set by GSAP 
       }
   }
-//------------------- mobile menu slider
+//------------------- mobile menu slider ==>
    @media (max-width: 680px){
     display: grid;
     background:transparent;
     grid-template-columns: 9fr 1fr;
     margin-top: .5rem;
-    margin-bottom: -18rem;
+    margin-bottom: -16.5rem;
     pointer-events: none;
     border-bottom:none;
+    padding: 0 1rem;
     
     
     & .nav-icons{
@@ -65,7 +67,7 @@ const ToolbarWrapper = styled.div`
       grid-gap: 2rem;
       margin-top: 3rem;
       opacity:0;
-      visibility:hidden ;   /* XXXXXXXXXXXXXX */
+      visibility:hidden ; 
       padding: .8rem;
       background-color: var( --color-white );
       box-shadow: -1px 1.5px 3px 1.5px rgba(0,0,0,0.46);
@@ -90,7 +92,7 @@ const ToolbarWrapper = styled.div`
        padding: .4rem .6rem;
     }    
   }
-//-------------------
+//-------------------   <==
   & .nav-icons {
     display: flex;
     align-items: center;
@@ -151,13 +153,12 @@ interface ToolbarWrapperType{
    error: string|undefined;
 }
 function Home() {
-//----------------for initial loading---
+//----------------for initial loading--- ==>
       const [isLoading, setIsLoading] = useState(true);
       useEffect(()=>{
         window.addEventListener('load', ()=> {
           setIsLoading(false);
-          toggleVisibility(targetRef)
-        })
+         })
       },[])
 //----------------for initial loading---<==\\
   const dispatch = useAppDispatch();
@@ -208,7 +209,7 @@ function Home() {
 
            {/* View */}
            <ViewStyle>
-             <Outlet />
+            <Outlet /> 
            </ViewStyle>
          </div>
        )}

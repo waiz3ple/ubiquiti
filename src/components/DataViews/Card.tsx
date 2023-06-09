@@ -49,7 +49,6 @@ function Card({imgUrl, productName, productLine}: propsType) {
   </h4>
   <p className="product-line">{productLine}</p>
 </CardStyled>
-
   )
 }
 

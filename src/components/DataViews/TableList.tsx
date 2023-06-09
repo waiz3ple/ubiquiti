@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
-import NotFound from '../../pages/NotFound';
 import { useAppDispatch, useAppSelector, useSearch } from '../../redux/Hooks';
 import { UpdatedType } from '../../redux/Types';
-import { includeActiveProp, processError } from '../../redux/Util';
 import { fetchDevices } from '../../redux/features/data/Devices';
 import { loadData, makeActive } from '../../redux/features/data/UpdatedData';
 import { loadStableData } from '../../redux/features/data/UpdatedStableData';
+import { includeActiveProp, processError } from '../Util';
 import ListLoader from '../loaders/ListLoader';
+import NotFound from '../pages/NotFound';
 import SpecTable from './SpecTable';
 
 

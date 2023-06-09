@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import image404 from '../assets/images/image.svg';
-import Button from '../components/Button';
+import image404 from '../../assets/images/image.svg';
+import Button from '../Button';
 
 const NotFoundWrapper = styled.div`
     text-align: center;

@@ -1,14 +1,14 @@
 import { AnyAction, AsyncThunkAction, Dispatch } from "@reduxjs/toolkit";
 import { Key, useEffect } from "react";
 import styled from "styled-components";
-import NotFound from "../../pages/NotFound";
 import { useAppDispatch, useAppSelector, useSearch } from "../../redux/Hooks";
 import { OriginalType, UpdatedType } from "../../redux/Types";
-import { includeActiveProp, processError } from "../../redux/Util";
 import { fetchDevices } from "../../redux/features/data/Devices";
 import { loadData } from "../../redux/features/data/UpdatedData";
 import { loadStableData } from "../../redux/features/data/UpdatedStableData";
+import { includeActiveProp, processError } from "../Util";
 import GridLoader from "../loaders/GridLoader";
+import NotFound from "../pages/NotFound";
 import Card from "./Card";
 
 interface LoadAndErrorType{

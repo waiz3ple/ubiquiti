@@ -6,8 +6,8 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import GridList from './components/DataViews/GridList';
 import TableList from './components/DataViews/TableList';
 import Header from "./components/Header";
-import Home from './pages/Home';
-import NotFound from './pages/NotFound';
+import Home from './components/pages/Home';
+import NotFound from './components/pages/NotFound';
  
 
 const router = createBrowserRouter(
