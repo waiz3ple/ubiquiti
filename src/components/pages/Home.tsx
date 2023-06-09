@@ -153,16 +153,26 @@ interface ToolbarWrapperType{
    error: string|undefined;
 }
 function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+  const dispatch = useAppDispatch();
+  const targetRef = useRef<HTMLDivElement>(null);
 //----------------for initial loading--- ==>
-      const [isLoading, setIsLoading] = useState(true);
+    /*   
       useEffect(()=>{
         window.addEventListener('load', ()=> {
           setIsLoading(false);
          })
-      },[])
+      },[]) */
+
+    useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // Simulate a 2-second asynchronous task
+    // Clean up the timer if the component unmounts before the task is complete
+    return () => clearTimeout(timer);
+  }, []);
+
 //----------------for initial loading---<==\\
-  const dispatch = useAppDispatch();
-  const targetRef = useRef<HTMLDivElement>(null);
   return ( 
      <main>
        {isLoading ? (
