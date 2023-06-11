@@ -34,36 +34,64 @@
     "test": "react-scripts test",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "coverage": "yarn test --coverage --watchAll"
-
+    "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx,css,scss}\"",
+    "lint": "eslint --ignore-path .gitignore .",
+    "coverage": "yarn test --coverage --watchAll",
+    "prepare": "husky install"
   },
   "eslintConfig": {
-    "extends": ["react-app", "react-app/jest"]
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:jest-dom/recommended",
+      "eslint-config-prettier"
+    ]
   },
   "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
-    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
+    "@types/redux-mock-store": "^1.0.3",
     "@types/uuid": "^9.0.1",
-    "gh-pages": "^5.0.0"
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-jest-dom": "^5.0.1",
+    "gh-pages": "^5.0.0",
+    "husky": "^8.0.0",
+    "msw": "^1.2.2",
+    "prettier": "^2.8.8",
+    "redux-mock-store": "^1.5.4"
   },
-"jest": {
-  "coverageThreshold": {
-    "global": {
-      "branches": 80,
-      "functions": 80,
-      "lines": 80,
-      "statements": -10
-    }
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint"
+    ],
+    "*.{ts,tsx,css,scss}": [
+      "prettier"
+    ]
   },
-  "collectCoverageFrom": [
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": -10
+      }
+    },
+    "collectCoverageFrom": [
       "src/components/**/*.{ts,tsx}",
       "!src/components/{Util, IconList,}.{ts, tsx}",
       "!src/components/loaders/**",
       "!src/components/**/*.{types,stories,test,spec,constants}.{ts,tsx}"
     ]
+  }
 }
-
-}
-

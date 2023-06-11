@@ -6,18 +6,15 @@ import { Provider as ReduxProvider } from 'react-redux';
 import App from './App';
 import GlobalStyle from './GlobalStyles';
 import store from './redux/Store';
- 
 
-
-
-const root = ReactDOM.createRoot( document.getElementById('root') as HTMLElement);
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement
+);
 root.render(
   <QueryClientProvider client={new QueryClient()}>
-      <GlobalStyle/>
-      <ReduxProvider store={store}>
-         <App />
-      </ReduxProvider> 
+    <GlobalStyle />
+    <ReduxProvider store={store}>
+      <App />
+    </ReduxProvider>
   </QueryClientProvider>
-  
 );
-

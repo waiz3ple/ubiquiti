@@ -9,6 +9,7 @@ Welcome to the Ubiquiti device search page for in-house staff and developers. We
 - [Project Structure](#project-structure)
 - [Strong Areas](#strong-areas)
 - [Areas to Improve](#areas-to-improve)
+- [Testing](#testing)
 - [Contributing](#contributing)
 - [Appreciation](#appreciation)
 
@@ -110,16 +111,28 @@ The following areas need improvement in this project:
 
 - **Font Import**: Unfortunately, I couldn't import font using ES6 import here I have to settle with commonJS require method.
 - **Design**: The navigation while on the mobile phase needs a general redesign. I plan to make it collapsible with the name of each nav icon shows up on full expansion and icon on semi expansion.
-- **Testing**: Manual testing and TypeScript were used in this project, but it awaits unit and end-to-end testing.
-- **Bug**: The menu button on the mobile view requires being clicked twice for the first time. This error is due to GSAP trying to initialize inline properties to the DOM before manipulation. I marked this error as high priority, and it will be fixed in the next update.
+- **Testing**: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx,
+
+## Testing
+
+The test environment has been well configured, to continue with the test:
+
+1. To run and watch all tests:
+   ```
+   npm run test
+   ```
+2. To Check Test Coverage report
+   ```
+   npm run coverage
+   ```
+3. To ReFormat all changes
+   ```
+   npm run format
+   ```
 
 ## Contributing
 
 Your suggestions are welcome, I will like to learn more.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
 
 ---
 

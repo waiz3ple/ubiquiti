@@ -5,20 +5,20 @@ import image404 from '../../assets/images/image.svg';
 import Button from '../Button';
 
 const NotFoundWrapper = styled.div`
-    text-align: center;
-    & img{
-       width: 30%;
-       margin: auto;
-       display: block;
-    }
-    h1{
-      font-size: 3rem;
-    }
+  text-align: center;
+  & img {
+    width: 30%;
+    margin: auto;
+    display: block;
+  }
+  h1 {
+    font-size: 3rem;
+  }
 
-    & p{
-      margin: 1rem 0;
-      font-size: 1.2rem;
-    }
+  & p {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+  }
 `;
 
 interface NotFoundProps {
@@ -34,7 +34,7 @@ const NotFound: React.FC<NotFoundProps> = ({
 }) => {
   return (
     <NotFoundWrapper>
-      <img src={image404} alt="404 Image" />
+      <img src={image404} alt="not found" />
       <h1 className="title">{errorMessage}</h1>
       <p>{errorDetail}</p>
       <Button>
@@ -47,9 +47,3 @@ const NotFound: React.FC<NotFoundProps> = ({
 };
 
 export default NotFound;
-
-
-
-
-
-

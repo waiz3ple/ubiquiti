@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+#! run all test on push and push if all pass
+npm test -- --watchAll=false

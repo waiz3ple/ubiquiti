@@ -1,108 +1,117 @@
-import styled from "styled-components";
-import Shimmer from "./Shimmer";
+import styled from 'styled-components';
+import Shimmer from './Shimmer';
 
 const ListSkeletonStyle = styled.table`
-  width: 100%;  
+  width: 100%;
   border-collapse: collapse;
 
-  & > thead > tr, tbody > tr{
-     display: grid;
-     grid-template-columns: 1fr 3fr 10fr;
-     border-bottom: 1px solid var(--color-grey-3);
+  & > thead > tr,
+  tbody > tr {
+    display: grid;
+    grid-template-columns: 1fr 3fr 10fr;
+    border-bottom: 1px solid var(--color-grey-3);
   }
-     
-    &  td, th  {
-       display: grid;
-       
-       text-align: left;
-       padding: .5rem 2rem; 
-       align-content: center;
-       
-       &:first-child{
-        justify-items: center;
-       }
 
-     }
+  & td,
+  th {
+    display: grid;
 
-     &  thead {
-        & th{
-          padding-bottom: .5rem;
+    text-align: left;
+    padding: 0.5rem 2rem;
+    align-content: center;
 
-           &:first-child{
-           font-size: .9rem;
-        }
+    &:first-child {
+      justify-items: center;
+    }
+  }
 
-        &:not(:first-child){
-           font-size: 1.2rem;
-           text-transform: uppercase;
-          }
-        }
-     }
+  & thead {
+    & th {
+      padding-bottom: 0.5rem;
 
-     & tbody{
-       font-size: 1.1rem;
-       color: var(--color-grey-3);
-        & tr{
-          position: relative;
-          height: 3rem;
-          overflow: hidden;
-       }
-       
-       & td:first-child{
-         justify-items: end;
-         & div{
-           width: 1.5rem;
-           height: 2rem;
-           background-color: currentColor;
-         }
-        } 
+      &:first-child {
+        font-size: 0.9rem;
+      }
 
+      &:not(:first-child) {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+      }
+    }
+  }
 
-        & td:nth-child(2){
-           & div {
-             width: 5rem;
-             height: 1.2rem;
-             background-color:currentColor;
-           }
-        }
-        
-        & td:nth-child(3){
-           & div {
-             width: 10rem;
-             height: 1.2rem;
-             background-color: currentColor;
-           }
-        }
-         
-     }
+  & tbody {
+    font-size: 1.1rem;
+    color: var(--color-grey-3);
+    & tr {
+      position: relative;
+      height: 3rem;
+      overflow: hidden;
+    }
+
+    & td:first-child {
+      justify-items: end;
+      & div {
+        width: 1.5rem;
+        height: 2rem;
+        background-color: currentColor;
+      }
+    }
+
+    & td:nth-child(2) {
+      & div {
+        width: 5rem;
+        height: 1.2rem;
+        background-color: currentColor;
+      }
+    }
+
+    & td:nth-child(3) {
+      & div {
+        width: 10rem;
+        height: 1.2rem;
+        background-color: currentColor;
+      }
+    }
+  }
 `;
 
+function ListLoader(props: { size: number }) {
+  // make this reusable
 
-function ListLoader(props: { size: number }){  // make this reusable
-   
-    return (
-      <div>
-         <ListSkeletonStyle>
-           <thead>
-              <tr>
-                <th><div></div></th>
-                <th>Productline</th>
-                <th>Name</th>
-              </tr>
-           </thead>
-           <tbody>
-            {Array.from({length:props.size}, (_, i)=> (
-              <tr key={i}>
-                <td><div></div></td>
-                <td><div></div></td>
-                <td><div></div></td>
-                <td><Shimmer/></td>
-              </tr>
-              ))}
-           </tbody>
-         </ListSkeletonStyle>
-        </div>
-    ) 
+  return (
+    <div>
+      <ListSkeletonStyle>
+        <thead>
+          <tr>
+            <th>
+              <div></div>
+            </th>
+            <th>Productline</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Array.from({ length: props.size }, (_, i) => (
+            <tr key={i}>
+              <td>
+                <div></div>
+              </td>
+              <td>
+                <div></div>
+              </td>
+              <td>
+                <div></div>
+              </td>
+              <td>
+                <Shimmer />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </ListSkeletonStyle>
+    </div>
+  );
 }
 
 export default ListLoader;

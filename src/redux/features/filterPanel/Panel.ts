@@ -1,22 +1,22 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface initialState{
-   isOpened:boolean,
+interface initialStateType {
+  isOpened: boolean;
 }
 
-const initialState : initialState  = {
-    isOpened: false,
-}
+const initialState: initialStateType = {
+  isOpened: false,
+};
 
-const panelSlice =  createSlice({
-    name: 'filterPanel',
-    initialState,
-    reducers: {
-        OpenPanel: (state, action: PayloadAction<boolean> )=> {
-          state.isOpened = action.payload;
-        }
-    }
-})
+const panelSlice = createSlice({
+  name: 'filterPanel',
+  initialState,
+  reducers: {
+    OpenPanel: (state, action: PayloadAction<boolean>) => {
+      state.isOpened = action.payload;
+    },
+  },
+});
 
 export default panelSlice.reducer;
-export const { OpenPanel } = panelSlice.actions
+export const { OpenPanel } = panelSlice.actions;

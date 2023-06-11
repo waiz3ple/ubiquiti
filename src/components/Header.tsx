@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const HeaderStyle = styled.header`
     width: 100%;
@@ -34,31 +34,32 @@ const HeaderStyle = styled.header`
    }
 `;
 
-interface propsType{
-   user?: string,
-   error?:string,
-   loading?: boolean
+interface propsType {
+  user?: string;
+  error?: string;
+  loading?: boolean;
 }
 
-function Header(props: propsType){
-   return(
-      <HeaderStyle>
-        {/* Brand logo */}
-        <Link to="/">
-          <img className="brand-logo" alt="Brand Logo" src="https://cdn.shopify.com/s/files/1/1439/1668/t/28/assets/logo.svg?v=136823354682183510631672761392" />
-        </Link>
-        {/* Page title */}
-        <h4 className="devices">Devices</h4>
-        {/* User info */}
-        <div className="user-info">
-          {/* User name */}
-          <p>Author/{props.user || 'Developer Name'}</p>
-        </div>
-      </HeaderStyle>
-
-   )
+function Header(props: propsType) {
+  return (
+    <HeaderStyle>
+      {/* Brand logo */}
+      <Link to="/">
+        <img
+          className="brand-logo"
+          alt="Brand Logo"
+          src="https://cdn.shopify.com/s/files/1/1439/1668/t/28/assets/logo.svg?v=136823354682183510631672761392"
+        />
+      </Link>
+      {/* Page title */}
+      <h4 className="devices">Devices</h4>
+      {/* User info */}
+      <div className="user-info">
+        {/* User name */}
+        <p>Author/{props.user || 'Developer Name'}</p>
+      </div>
+    </HeaderStyle>
+  );
 }
 
 export default Header;
-
-

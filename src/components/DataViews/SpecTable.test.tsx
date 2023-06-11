@@ -11,7 +11,10 @@ describe('SpecTable', () => {
     unifi: { adoptability: 'Adoptable', protect: { fov: 'FOV Value' } },
     fcc: 'FCC Value',
     ic: 'IC Value',
-    usip: { nameLegacy: 'Legacy Name', firmware: { platform: 'Platform', board: 'Board' } },
+    usip: {
+      nameLegacy: 'Legacy Name',
+      firmware: { platform: 'Platform', board: 'Board' },
+    },
   };
 
   it('renders the device image', () => {
@@ -63,5 +66,4 @@ describe('SpecTable', () => {
   });
 });
 
-export { };
-
+export {};

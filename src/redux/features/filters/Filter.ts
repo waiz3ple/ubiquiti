@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuid } from 'uuid';
 
 interface PanelOption {
@@ -6,97 +6,47 @@ interface PanelOption {
   isActive: boolean;
   id: string;
 }
+// -------------------------------
+/* const panelOptions: PanelOption[] = [
+  { option: 'UniFi', isActive: false, id: 2i3u1iu2i2 },
+  { option: 'UniFi LTE', isActive: false, id: 292183h282 },
+];       function  panelOption generate a list of array oject that look like this*/
 
-const panelOptions: PanelOption[] = [
-  { option: 'UniFi',         isActive: false, id: uuid() },
-  { option: 'UniFi LTE',     isActive: false, id: uuid() },
-  { option: 'UniFi Protect', isActive: false, id: uuid() },
-  { option: 'UniFi Access',  isActive: false, id: uuid() },
-  { option: 'AirMax',        isActive: false, id: uuid() },
-  { option: 'EdgeMax',       isActive: false, id: uuid() },
-];
-
+function panelOptions(options: string[]){
+  const keeper: PanelOption[] = [];
+  options.forEach(option =>{
+    keeper.push({
+      option: option,
+      isActive: false,
+      id: uuid()
+    })
+  }) 
+  return keeper;
+}
+const optionsArray :string[] = ['Unifi', 'UniFi LTE', 'UniFi Protect', 'UniFi Access', 'AirMax',  'EdgeMax']; 
+//-----------------------------------------------------
 const filterSlice = createSlice({
   name: 'filters',
-  initialState: panelOptions,
+  initialState: panelOptions(optionsArray),
   reducers: {
     addOption: (state, action: PayloadAction<string>) => {
       state.push({ option: action.payload, isActive: false, id: uuid() });
     },
 
-    makeActiveOption: (state, action:PayloadAction<string>) =>{
-        const id = action.payload;
-        state.forEach(element => {
-           element.isActive =  element.id === id;
-        })
-    },
-    
-    clearActive: (state)=> {
-      state.forEach(element=> {
-        element.isActive = false;
-      })
-    }
-  },
-});
-
-export default filterSlice.reducer;
-export const { addOption, makeActiveOption, clearActive } = filterSlice.actions;
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* interface Filter {
-  [property:string]: unknown
-}
-
-const initialState: Filter[] = [
-  { id: '1233', isActive: true },
-  { id: '1433', isActive: true },
-];
-
-const filterSlice = createSlice({
-  name: 'filterSlice',
-  initialState,
-  reducers: {
-    makeIsActiveState: (state, action: PayloadAction<Filter[]>) => {
-      const arr = action.payload;
-      arr.forEach((element) => {
-        state.push({
-          ...element,
-          id: element.id || uuid(),
-          isActive: false,
-        });
-      });
-    },
-
-    makeChildActive: (state, action: PayloadAction<string>) => {
+    makeActiveOption: (state, action: PayloadAction<string>) => {
       const id = action.payload;
       state.forEach((element) => {
         element.isActive = element.id === id;
       });
     },
+
+    clearActive: (state) => {
+      state.forEach((element) => {
+        element.isActive = false;
+      });
+    },
   },
 });
 
-export const { makeIsActiveState, makeChildActive } = filterSlice.actions;
 export default filterSlice.reducer;
- */
+export const { addOption, makeActiveOption, clearActive } = filterSlice.actions;

@@ -1,13 +1,12 @@
 import { AxiosResponse } from 'axios';
 import { gsap } from 'gsap';
-import { RefObject } from 'react';
 import { v4 as uuid } from 'uuid';
 import { OriginalType, UpdatedType } from '../redux/Types';
 
-// add id and isActive property to our searched result 
+// add id and isActive property to our searched result
 // [{x:'x'}, {y:'y'}]  => [{x:'x', id:123, isActtive: false}, {y:'y', id: 283, isActtive: false}]
 export function includeActiveProp(originalData: OriginalType): UpdatedType {
-   return originalData?.map((item: OriginalType) => ({
+  return originalData?.map((item: OriginalType) => ({
     ...item,
     id: item.id || uuid(), // making sure id is accesible
     isActive: false,
@@ -15,16 +14,15 @@ export function includeActiveProp(originalData: OriginalType): UpdatedType {
 }
 
 // in other to not peace off users, this function will return reject promise after exhusting the given duration
-export const timeoutPromise = (duration: number = 4000) => new Promise<AxiosResponse>(( _, reject) =>{
+export const timeoutPromise = (duration: number = 4000) =>
+  new Promise<AxiosResponse>((_, reject) => {
     setTimeout(() => {
-      return reject( new Error('Request Timed Out!'))
+      return reject(new Error('Request Timed Out!'));
     }, duration);
-  }) 
-
-
+  });
 
 //----------------------TOGGLE VISIBILITY-------------
-  export function toggleVisibility(targetRef: React.RefObject<HTMLElement>) {
+export function toggleVisibility(targetRef: React.RefObject<HTMLElement>) {
   const target = targetRef.current!;
 
   if (target) {
@@ -33,8 +31,7 @@ export const timeoutPromise = (duration: number = 4000) => new Promise<AxiosResp
       autoAlpha: target.style?.opacity === '1' ? 0 : 1,
       duration: 0.5,
       ease: 'power1.easeInOut',
-    })
-    .fromTo(
+    }).fromTo(
       target,
       {
         y: 20,
@@ -50,28 +47,29 @@ export const timeoutPromise = (duration: number = 4000) => new Promise<AxiosResp
   }
 }
 
-  //------------------#### ERROR MESSAGES  ###-------------  // Manage all sort of
-  export function processError(error:string){
-      switch(true){
-        case error.includes('Network'): 
-        return{
-          errorMessage: 'Connection Failure!',
-          errorDetail: `We couldn't load the page due to connection error, check your WiFi or Signal`,
-          linkTitle: 'Retry'
-        }
+//------------------#### ERROR MESSAGES  ###-------------  // Manage all sort of
+export function processError(error: string) {
+  switch (true) {
+    case error.includes('Network'):
+      return {
+        errorMessage: 'Connection Failure!',
+        errorDetail: `We couldn't load the page due to connection error, check your WiFi or Signal`,
+        linkTitle: 'Retry',
+      };
 
-        case error.includes('Request Timed Out'): 
-        return{
-          errorMessage: 'Connection Request Timed Out!',
-          errorDetail: 'Error from our end, We terminated the request due to maximum load on our network.',
-          linkTitle: 'Try again later'
-        }
+    case error.includes('Request Timed Out'):
+      return {
+        errorMessage: 'Connection Request Timed Out!',
+        errorDetail:
+          'Error from our end, We terminated the request due to maximum load on our network.',
+        linkTitle: 'Try again later',
+      };
 
-        default : 
-        return{
-          errorMessage: error,
-          errorDetail: `We encountered ${error}`,
-          linkTitle: 'Retry'
-        }
-      }
+    default:
+      return {
+        errorMessage: error,
+        errorDetail: `We encountered ${error}`,
+        linkTitle: 'Retry',
+      };
   }
+}
