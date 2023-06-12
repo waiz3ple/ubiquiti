@@ -38,9 +38,7 @@ const NotFound: React.FC<NotFoundProps> = ({
       <h1 className="title">{errorMessage}</h1>
       <p>{errorDetail}</p>
       <Button>
-        <Link to="/ubiquiti">{linkTitle}</Link>
-        {/* Uncomment the line below to go back to the home page */}
-        {/* <Link to="/">Go back Home</Link> */}
+        <Link to="/">{linkTitle}</Link>
       </Button>
     </NotFoundWrapper>
   );

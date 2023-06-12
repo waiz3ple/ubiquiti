@@ -1,5 +1,4 @@
 {
-  "homepage": "http://waiz3ple.github.io/ubiquiti",
   "name": "ubiquiti-proj",
   "version": "0.1.0",
   "private": true,
@@ -33,7 +32,6 @@
     "eject": "react-scripts eject",
     "test": "react-scripts test",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx,css,scss}\"",
     "lint": "eslint --ignore-path .gitignore .",
     "coverage": "yarn test --coverage --watchAll",
@@ -64,7 +62,6 @@
     "@types/uuid": "^9.0.1",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-jest-dom": "^5.0.1",
-    "gh-pages": "^5.0.0",
     "husky": "^8.0.0",
     "msw": "^1.2.2",
     "prettier": "^2.8.8",

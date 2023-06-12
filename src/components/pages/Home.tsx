@@ -180,12 +180,12 @@ function Home() {
             {/* Navigation Icons */}
             <div className="nav-icons" ref={targetRef}>
               {/* Ubiquiti Home */}
-              <NavLink to="/ubiquiti">
+              <NavLink to="/">
                 <BulletList size={30} />
               </NavLink>
 
               {/* Grid Link */}
-              <NavLink to="/ubiquiti/grid">
+              <NavLink to="/grid">
                 <GridIcon size={25} />
               </NavLink>
 

@@ -29,10 +29,6 @@ const filterSlice = createSlice({
   name: 'filters',
   initialState: panelOptions(optionsArray),
   reducers: {
-    addOption: (state, action: PayloadAction<string>) => {
-      state.push({ option: action.payload, isActive: false, id: uuid() });
-    },
-
     makeActiveOption: (state, action: PayloadAction<string>) => {
       const id = action.payload;
       state.forEach((element) => {
@@ -49,4 +45,4 @@ const filterSlice = createSlice({
 });
 
 export default filterSlice.reducer;
-export const { addOption, makeActiveOption, clearActive } = filterSlice.actions;
+export const { makeActiveOption, clearActive } = filterSlice.actions;
