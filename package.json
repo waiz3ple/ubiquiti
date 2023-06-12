@@ -92,6 +92,9 @@
       "!src/components/{Util, IconList,}.{ts, tsx}",
       "!src/components/loaders/**",
       "!src/components/**/*.{types,stories,test,spec,constants}.{ts,tsx}"
-    ]
+    ],
+    "moduleNameMapper": {
+      "axios": "axios/dist/node/axios.cjs"
+    }
   }
 }

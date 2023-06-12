@@ -66,4 +66,5 @@ describe('SpecTable', () => {
   });
 });
 
-export {};
+export { };
+
