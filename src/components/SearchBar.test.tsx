@@ -11,7 +11,7 @@ describe('SearchBar', () => {
     //expect(searchField).toHaveAttribute('placeholder', 'Search');
   });
 
-  it('Searchbar is focus on', async () => {
+  it('Searchbar is focused on', async () => {
     user.setup();
      render(<SearchBar />);
     const searchBar = screen.getByRole('searchbox');

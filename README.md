@@ -1,6 +1,6 @@
-# React Assessment
+# Ubiquiti Device Search
 
-Welcome to the Ubiquiti device search page for in-house staff and developers. We provide this interface for easy access to numerous products we have in stock, including product names, lines, and specifications. The interface is designed to be accessible to all staff members on various devices, ranging from wide-screen monitors and laptops to tablets and small-screen phones.
+Welcome to the Ubiquiti device search for in-house staffs and developers. We provide this interface for easy access to numerous products we have in stock, including product names, lines, and specifications. The interface is designed to be accessible to all staff members on various devices, ranging from wide-screen monitors and laptops to tablets and small-screen phones.
 
 ## Table of Contents
 
@@ -15,7 +15,7 @@ Welcome to the Ubiquiti device search page for in-house staff and developers. We
 
 ## Installation
 
-To get started with this Assessment project, follow these steps:
+To get started with this project, follow these steps:
 
 1. Clone this repository to your local machine using the following command:
    ```
@@ -37,14 +37,11 @@ To get started with this Assessment project, follow these steps:
 
 ## Usage
 
-Once the development server is running, you can begin exploring and interacting with the React Assessment project. The project includes the following features:
+Once the development server is running, you can begin intertracting with the search bar, query any product you want and filter out the different categories available. You can also change view mode with naviagtion icons to grid or list view:
 
-- A home page with a search bar and navbar to search and filter products.
-- The navigation includes list view, grid view, and filter options.
-- The color tone of the page is maintained as grayscale.
-- Basic routing setup using React Router.
-
-Feel free to modify and enhance the project.
+- List view is the default home page.
+- But you can bookmark either of the view and load from there on future visit.
+- The color tone of the page is maintained in grayscale.
 
 ## Project Structure
 
@@ -59,38 +56,42 @@ Ubiquiti/
        |- images/
     |- components/
        |- DataView/
-       |- FilterPanel.jsx
+         |- Card.tsx
+         |- GridList.tsx
+         |- SpecTable.tsx
+         |- TableList.tsx
+       |- FilterPanel.tsx
        |- Header.jsx
-       |- IconList.jsx
-       |- SearchBar.jsx
-    |- pages/
-       |- Home.jsx
-       |- NotFound.jsx
+       |- IconList.tsx
+       |- SearchBar.tsx
+       |- pages/
+         |- Home.tsx
+         |- NotFound.tsx
     |- Redux/
       |- features/
        |- data/
-          |- Devices.js
-          |- UpdatedData.js
-          |- UpdatedStableData.js
+          |- Devices.ts
+          |- UpdatedData.ts
+          |- UpdatedStableData.ts
        |- filterPanel/
-          |- Panel.js
+          |- Panel.ts
        |- filters/
-          |- Filter.js
+          |- Filter.ts
        |- search/
           |- Search/
-       |- Store.js
-    |- Hooks.js
-    |- Util.js
-    |- GlobalStyle.js
-    |- App.js
-    |- index.js
+       |- Store.ts
+    |- Hooks.ts
+    |- Util.ts
+    |- GlobalStyle.tsx
+    |- App.tsx
+    |- index.tsx
     |- ...
   |- ...
   |- README.md
   |- ...
 ```
 
-The `public` directory contains the index HTML file and any other static assets. The `src` directory contains the main application code, including components and the root `App.jsx` file.
+The `public` directory contains the index HTML file and any other static assets. The `src` directory contains the main application code, including components and the root `App.tsx` file.
 
 ## Strong Areas
 
@@ -103,49 +104,62 @@ The following are the areas that are well-handled in this project:
 - **Styling and Animation**: styled-components was used in this project due to its nesting feature (similar to SASS), ease of passing props, ability to coexist in the same file with JavaScript and HTML. GSAP was used for animations, making complex animations easier to understand.
 - **Assets and Graphics**: All images used are SVG and have been made into reusable components. Unique images were drawn using Adobe Illustrator.
 - **Error Handling**: All error messages have been improved and are presented in a user-friendly and helpful way.
-- **Documentation**: Comments have been added to explain the purpose of each function and complex blocks of code.
+- **Documentation**: Comments have been added to explain the purpose of each function and on complex blocks of code.
 
 ## Areas to Improve
 
-The following areas need improvement in this project:
+The following areas need improvement:
 
 - **Font Import**: Unfortunately, I couldn't import font using ES6 import here I have to settle with commonJS require method.
-- **Design**: The navigation while on the mobile phase needs a general redesign. I plan to make it collapsible with the name of each nav icon shows up on full expansion and icon on semi expansion.
-- **Testing**: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx,
+
+- **Design**: The design offers two views for users: list view and grid view.
+
+<img src="./src/assets/readme-images/list-route.png" alt="List Route" width="50%"> 
+<p>List View</p>
+
+However, if a user navigate through grid route, they will not receive the same information as those who navigated thtough the list route, as device specification is not available in the grid view. Therefore, the grid view needs to be redesigned or adjusted in such a way that the same information is received regardless the route token.
+
+<img src="./src/assets/readme-images/grid-route.png" alt="Grid Route" width="50%">
+<p>Grid View<p></p>
+ 
+ The filter panel needs to be draggable so that it's not be obstructing the user view especially those on small screens.
+ or the entire navigation could be re-design for small screen which will be collapsible.
+
+<img src="./src/assets/readme-images/filter-panel.png" alt="Filter Panel" width="150">
+<p>Filter Panel</p>
+
+- **Testing**: I have only written few tests, lot of test still need to be written.
 
 ## Testing
 
 The test environment has been well configured, to continue with the test:
 
-1. To run and watch all tests:
+1. To run tests:
    ```
    npm run test
    ```
-2. To Check Test Coverage report
+2. To check test coverage report
    ```
    npm run coverage
    ```
-3. To ReFormat all changes
+3. To re-format all changes
    ```
    npm run format
    ```
+4. To lint
+   ```
+   npm run lint
+   ```
+   However, the test environment is configured to run test, lint and format before push. However, it will abort pushing to remote repo if it flag any error.
 
 ## Contributing
 
-Your suggestions are welcome, I will like to learn more.
+Continue with this project from the area marked as "Area to improve".
 
 ---
 
 ## Appreciation
 
 I wanted to express my sincere appreciation for the opportunity given to me to work on this project assessment. It was an enriching experience, and I wanted to take a moment to thank you for considering me as a candidate for the position.
-
-Throughout the assessment process, I had the chance to showcase my skills and demonstrate my capabilities. The project challenged me to think critically, apply my knowledge, and conduct effective research. One of the most challenging aspects for me was nesting the table, as I had never had the chance to do that before. I truly enjoyed working on the entire project, and it was a great opportunity for personal and professional growth.
-
-I want to assure you that I approached this project assessment with utmost dedication, and I am confident that the work I submitted accurately reflects my abilities and commitment to delivering high-quality results. I am genuinely excited about the possibility of joining your team and contributing to Ubiquiti's success.
-
-Once again, I want to thank you for considering me for this opportunity. I truly appreciate the chance to showcase my skills and be part of the assessment process. I look forward to hearing from you regarding the next steps in the hiring process.
-
-If there are any additional details or information you require, please do not hesitate to reach out to me. Thank you once again for your time and consideration.
 
 Thanks!
