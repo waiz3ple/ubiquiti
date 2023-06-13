@@ -94,7 +94,7 @@ Ubiquiti/
        |- filters/
           |- Filter.ts
        |- search/
-          |- Search/
+          |- Search.ts
        |- Store.ts
     |- Hooks.ts
     |- Util.ts
