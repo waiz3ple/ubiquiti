@@ -128,7 +128,8 @@ The following are the areas that are well-handled in this project:
 The following areas need improvement:
 
 - **Font Import**: Unfortunately, I couldn't import the font using ES6 import; here, I had to settle with the commonJS `require` method.
-
+- **Backend**: User authentication needs to be implemented so that users preference can be manage.
+- **Clearity**: It will be nice to show Tooltip with meaning of each icon on hovering each navigation icon so user who are not familier with them know what they are.
 - **Design**: The design offers two views for users: list view and grid view.
 
   ![List Route](./src/assets/readme-images/list-route.png)
