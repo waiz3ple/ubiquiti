@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import { useAppDispatch } from '../../redux/Hooks';
 import { OpenPanel } from '../../redux/features/filterPanel/Panel';
 import FilterPanel from '../FilterPanel';
 import Header from '../Header';
+import { useAppDispatch } from '../Hooks';
 import { BulletList, FilterIcon, GridIcon, ThreeBarsIcon } from '../IconList';
 import SearchBar from '../SearchBar';
 import { toggleVisibility } from '../Util';

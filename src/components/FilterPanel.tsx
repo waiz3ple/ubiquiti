@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { filterOut, useAppDispatch, useAppSelector } from '../redux/Hooks';
 import { loadData } from '../redux/features/data/UpdatedData';
 import { OpenPanel } from '../redux/features/filterPanel/Panel';
 import { clearActive, makeActiveOption } from '../redux/features/filters/Filter';
+import { filterOut, useAppDispatch, useAppSelector } from './Hooks';
 import { CloseIcon, StopButton } from './IconList';
 
 interface FilterWrapperProps {

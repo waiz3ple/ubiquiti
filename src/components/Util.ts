@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { gsap } from 'gsap';
 import { v4 as uuid } from 'uuid';
-import { OriginalType, UpdatedType } from '../redux/Types';
+import { OriginalType, UpdatedType } from './Types';
 
 // add id and isActive property to our searched result
 // [{x:'x'}, {y:'y'}]  => [{x:'x', id:123, isActtive: false}, {y:'y', id: 283, isActtive: false}]

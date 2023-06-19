@@ -1,4 +1,4 @@
-import { iconPropsType } from '../redux/Types';
+import { iconPropsType } from './Types';
 
 //seach icon🔍
 export function SearchIcon({

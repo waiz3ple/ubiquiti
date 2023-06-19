@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { UpdatedType } from '../../Types';
+import type { UpdatedType } from '../../../components/Types';
 
 export const initialState: UpdatedType = {
   id: '',
