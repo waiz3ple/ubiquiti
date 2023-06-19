@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/ubiquiti/static/js/main.f1496aee.js",
+    "main.js": "/ubiquiti/static/js/main.db566dcf.js",
     "static/media/Inter-Regular.otf": "/ubiquiti/static/media/Inter-Regular.e9b898342ed8036ee8ea.otf",
     "static/media/image.svg": "/ubiquiti/static/media/image.91638955dfc8dcdcb401462907fc26e3.svg",
     "index.html": "/ubiquiti/index.html",
-    "main.f1496aee.js.map": "/ubiquiti/static/js/main.f1496aee.js.map"
+    "main.db566dcf.js.map": "/ubiquiti/static/js/main.db566dcf.js.map"
   },
   "entrypoints": [
-    "static/js/main.f1496aee.js"
+    "static/js/main.db566dcf.js"
   ]
 }
