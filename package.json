@@ -32,6 +32,7 @@
     "eject": "react-scripts eject",
     "test": "react-scripts test",
     "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "format": "prettier --ignore-path .gitignore --write \"**/*.{ts,tsx,css,scss}\"",
     "lint": "eslint --ignore-path .gitignore .",
     "coverage": "yarn test --coverage --watchAll",

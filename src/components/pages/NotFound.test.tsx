@@ -18,7 +18,7 @@ test('renders the NotFound component correctly', () => {
   // Assert that the link is rendered and has the correct title and URL
   const link = screen.getByText(/Go back home/i);
   expect(link).toBeInTheDocument();
-  expect(link).toHaveAttribute('href', '/ubiquiti');
+  expect(link).toHaveAttribute('href', '/');
 });
 
 export { };

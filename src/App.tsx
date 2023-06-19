@@ -2,6 +2,7 @@ import {
   Route,
   RouterProvider,
   createBrowserRouter,
+  //createHashRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
 import GridList from './components/DataViews/GridList';
@@ -9,6 +10,7 @@ import TableList from './components/DataViews/TableList';
 import Home from './components/pages/Home';
 import NotFound from './components/pages/NotFound';
 
+//const router = createHashRouter(
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Home />}>

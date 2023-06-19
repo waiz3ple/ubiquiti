@@ -92,6 +92,7 @@ function SearchBar() {
         type="search"
         name="search"
         id="search"
+        autoComplete='off'
         placeholder="Search"
         value={searchValue}
         onChange={handleChange}
