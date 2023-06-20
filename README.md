@@ -80,6 +80,8 @@ Ubiquiti/
        |- Header.jsx
        |- IconList.tsx
        |- SearchBar.tsx
+       |- Hooks.ts
+       |- Util.ts
        |- pages/
          |- Home.tsx
          |- NotFound.tsx
@@ -96,8 +98,6 @@ Ubiquiti/
        |- search/
           |- Search.ts
        |- Store.ts
-    |- Hooks.ts
-    |- Util.ts
     |- GlobalStyle.tsx
     |- App.tsx
     |- index.tsx
