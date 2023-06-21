@@ -107,7 +107,7 @@ Ubiquiti/
   |- ...
 ```
 
-The `public` directory contains the index HTML file and any other static assets. The `src` directory contains the main application code, including components and the root `App.tsx` file.
+The `public` directory contains the index HTML file and other static assets. The `src` directory contains the main application code, including components and the root `App.tsx` file.
 
 ## Strong Areas
 
