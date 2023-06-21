@@ -140,7 +140,7 @@ The following areas need improvement:
   ![Grid Route](./src/assets/readme-images/grid-route.png)
   Grid View
 
-  The filter panel needs to be draggable so that it does not obstruct the user's view, especially those on small screens. Alternatively, the entire navigation could be redesigned for small screens. It can be made to collapse inside a flyout vertical list menu.
+  The filter panel needs to be draggable so that it does not obstruct the user's view, especially those on small screens. Alternatively, the entire navigation could be redesigned for small screens. It can be made to collapse inside a flyout vertical menu list.
 
   ![Filter Panel](./src/assets/readme-images/filter-panel.png)
   Filter Panel
