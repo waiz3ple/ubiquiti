@@ -1,26 +1,12 @@
-import {
-  Route,
-  RouterProvider,
-  createBrowserRouter,
-  //createHashRouter,
-  createRoutesFromElements,
-} from 'react-router-dom';
-import GridList from './components/DataViews/GridList';
-import TableList from './components/DataViews/TableList';
-import Home from './components/pages/Home';
-import NotFound from './components/pages/NotFound';
+import './App.css'
 
-//const router = createHashRouter(
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Home />}>
-      <Route index element={<TableList />} />
-      <Route path="grid" element={<GridList />} />
-      <Route path="*" element={<NotFound />} />
-    </Route>
+function App() {
+
+  return (
+    <>
+      cleaning up the code
+    </>
   )
-);
+}
 
-const App = () => <RouterProvider router={router} />;
-
-export default App;
+export default App
