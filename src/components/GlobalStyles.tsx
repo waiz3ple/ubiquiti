@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyles = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
     html {
         font-size:  62.50%;
         scroll-behavior: smooth;
@@ -19,6 +19,8 @@ export const GlobalStyles = createGlobalStyle`
         font-family: 'Inter', sans-serif;
         background-color: #f0f2f5;
         color: #333;
+        /* @@@@@@@@@@temp */
+        padding:  1rem;
     }
     
     a {
@@ -29,6 +31,7 @@ export const GlobalStyles = createGlobalStyle`
     button {
         cursor: pointer;
         font-family: inherit;
+        padding: 0.5rem 1rem;
     }
 
     input, textarea {
@@ -73,3 +76,4 @@ export const GlobalStyles = createGlobalStyle`
 
 
     `;  
+    export default GlobalStyles
