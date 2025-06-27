@@ -45,13 +45,30 @@ export const GlobalStyles = createGlobalStyle`
     ul, ol {
         list-style: none;
     }
-    
-    
 
+    h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+        font-weight: normal;
+    }
 
+    p {
+        margin: 0;
+        line-height: 1.5;
+    }
 
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
 
+    ::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 4px;
+    }
 
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #555;
+    }
 
 
 
